@@ -1,0 +1,6 @@
+framework module Pods_tmchat {
+  umbrella header "Pods-tmchat-umbrella.h"
+
+  export *
+  module * { export * }
+}
