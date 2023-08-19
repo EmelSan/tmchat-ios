@@ -263,7 +263,7 @@ extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
     }
         
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        print("print", viewModel.user.value, viewModel.inProgress.value)
+        print("print", viewModel.user.value as Any, viewModel.inProgress.value)
         if viewModel.user.value == nil && viewModel.inProgress.value == true {
             return nil
         }

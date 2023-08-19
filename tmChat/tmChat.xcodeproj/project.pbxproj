@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		846EEB792D8A8AAB33C71BDA /* Pods_tmchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ADF585AEDE0F8EC91D10D1 /* Pods_tmchat.framework */; };
 		8B4123812A1FD58F0058A4B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B4123802A1FD58F0058A4B6 /* GoogleService-Info.plist */; };
 		8B4123842A2002E80058A4B6 /* OnePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4123832A2002E80058A4B6 /* OnePostVC.swift */; };
 		8BFE77DC2A290E4700932BFE /* ComplainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE77DB2A290E4700932BFE /* ComplainVM.swift */; };
+		A5684305EC54C9CC375EBCA0 /* Pods_tmchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DD52E38434C45BC794EC4A /* Pods_tmchat.framework */; };
 		C009BF3329C8553A0065B807 /* TextMsgTbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009BF3229C8553A0065B807 /* TextMsgTbCell.swift */; };
 		C009BF3529C8561B0065B807 /* MsgSelectionBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009BF3429C8561B0065B807 /* MsgSelectionBtn.swift */; };
 		C009BF3729C85F170065B807 /* PanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009BF3629C85F170065B807 /* PanGestureRecognizer.swift */; };
@@ -215,7 +215,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		295E16FFC2BC765D024C0B32 /* Pods-tmchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tmchat.debug.xcconfig"; path = "Target Support Files/Pods-tmchat/Pods-tmchat.debug.xcconfig"; sourceTree = "<group>"; };
+		1858992E3A4731D7FEF4DB25 /* Pods-tmchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tmchat.debug.xcconfig"; path = "Target Support Files/Pods-tmchat/Pods-tmchat.debug.xcconfig"; sourceTree = "<group>"; };
+		65805ED8D92B064ADA6463EA /* Pods-tmchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tmchat.release.xcconfig"; path = "Target Support Files/Pods-tmchat/Pods-tmchat.release.xcconfig"; sourceTree = "<group>"; };
 		8B4123802A1FD58F0058A4B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B4123832A2002E80058A4B6 /* OnePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnePostVC.swift; path = tmChat/Controllers/OnePost/OnePostVC.swift; sourceTree = SOURCE_ROOT; };
 		8BFE77DB2A290E4700932BFE /* ComplainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComplainVM.swift; path = tmChat/Controllers/Complain/ComplainVM.swift; sourceTree = SOURCE_ROOT; };
@@ -350,7 +351,6 @@
 		C0B7FE1A29E7DA5300C91367 /* MediaViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewerVC.swift; sourceTree = "<group>"; };
 		C0B826B029D37E0B00332713 /* EmitMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitMsg.swift; sourceTree = "<group>"; };
 		C0B826B229D37E3100332713 /* ShortMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortMsg.swift; sourceTree = "<group>"; };
-		C0C65528F5A56D05D785443D /* Pods-tmchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tmchat.release.xcconfig"; path = "Target Support Files/Pods-tmchat/Pods-tmchat.release.xcconfig"; sourceTree = "<group>"; };
 		C0EE16C829B68B8E0032F165 /* tmchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tmchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EE16CB29B68B8E0032F165 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0EE16D429B68B8F0032F165 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -426,7 +426,7 @@
 		C0EE17FD29BC43430032F165 /* UsernameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameVC.swift; sourceTree = "<group>"; };
 		C0FD76EA29F9244400F47FD6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C0FD76EF29F968AA00F47FD6 /* tmchat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tmchat.entitlements; sourceTree = "<group>"; };
-		C2ADF585AEDE0F8EC91D10D1 /* Pods_tmchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tmchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3DD52E38434C45BC794EC4A /* Pods_tmchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tmchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,13 +434,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				846EEB792D8A8AAB33C71BDA /* Pods_tmchat.framework in Frameworks */,
+				A5684305EC54C9CC375EBCA0 /* Pods_tmchat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8117387ADCBDF6681A20CEBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3DD52E38434C45BC794EC4A /* Pods_tmchat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8B4123822A2002CF0058A4B6 /* OnePost */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,7 +796,7 @@
 				C0EE16CA29B68B8E0032F165 /* tmchat */,
 				C0EE16C929B68B8E0032F165 /* Products */,
 				E8CAEB82311A7772D67C147D /* Pods */,
-				C6B884AD5EB85AAF85F5E1E0 /* Frameworks */,
+				8117387ADCBDF6681A20CEBB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1136,19 +1144,11 @@
 			path = Username;
 			sourceTree = "<group>";
 		};
-		C6B884AD5EB85AAF85F5E1E0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C2ADF585AEDE0F8EC91D10D1 /* Pods_tmchat.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		E8CAEB82311A7772D67C147D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				295E16FFC2BC765D024C0B32 /* Pods-tmchat.debug.xcconfig */,
-				C0C65528F5A56D05D785443D /* Pods-tmchat.release.xcconfig */,
+				1858992E3A4731D7FEF4DB25 /* Pods-tmchat.debug.xcconfig */,
+				65805ED8D92B064ADA6463EA /* Pods-tmchat.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1160,11 +1160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0EE16DC29B68B8F0032F165 /* Build configuration list for PBXNativeTarget "tmchat" */;
 			buildPhases = (
-				EF15607AC262DACE3D2D4D5F /* [CP] Check Pods Manifest.lock */,
+				0D7F35118E2B0A6C6394034D /* [CP] Check Pods Manifest.lock */,
 				C0EE16C429B68B8E0032F165 /* Sources */,
 				C0EE16C529B68B8E0032F165 /* Frameworks */,
 				C0EE16C629B68B8E0032F165 /* Resources */,
-				07107004BBF1FDC3C34844C8 /* [CP] Embed Pods Frameworks */,
+				51643AB5F3C0C48B66196320 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1190,7 +1190,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C0EE16C329B68B8E0032F165 /* Build configuration list for PBXProject "tmchat" */;
+			buildConfigurationList = C0EE16C329B68B8E0032F165 /* Build configuration list for PBXProject "tmChat" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1225,24 +1225,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07107004BBF1FDC3C34844C8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF15607AC262DACE3D2D4D5F /* [CP] Check Pods Manifest.lock */ = {
+		0D7F35118E2B0A6C6394034D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1262,6 +1245,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51643AB5F3C0C48B66196320 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1607,7 +1607,7 @@
 		};
 		C0EE16DD29B68B8F0032F165 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 295E16FFC2BC765D024C0B32 /* Pods-tmchat.debug.xcconfig */;
+			baseConfigurationReference = 1858992E3A4731D7FEF4DB25 /* Pods-tmchat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1647,7 +1647,7 @@
 		};
 		C0EE16DE29B68B8F0032F165 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0C65528F5A56D05D785443D /* Pods-tmchat.release.xcconfig */;
+			baseConfigurationReference = 65805ED8D92B064ADA6463EA /* Pods-tmchat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1686,7 +1686,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C0EE16C329B68B8E0032F165 /* Build configuration list for PBXProject "tmchat" */ = {
+		C0EE16C329B68B8E0032F165 /* Build configuration list for PBXProject "tmChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0EE16DA29B68B8F0032F165 /* Debug */,

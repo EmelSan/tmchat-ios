@@ -41,7 +41,7 @@ class SocketClient: NSObject, WebSocketDelegate {
         socket.delegate = self
         socket.connect()
 
-        print(request.url)
+        print(request.url as Any)
         startReconnetTimer()
     }
 
