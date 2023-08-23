@@ -18,4 +18,22 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+
+    @discardableResult
+    func add(child: UIViewController, container: UIView) -> UIView? {
+        guard let childView = child.view else { return nil }
+
+        child.willMove(toParent: self)
+        container.addSubview(childView)
+        addChild(child)
+        child.didMove(toParent: self)
+
+        return childView
+    }
+
+    func remove(child: UIViewController) {
+        child.willMove(toParent: nil)
+        child.view.removeFromSuperview()
+        child.removeFromParent()
+    }
 }

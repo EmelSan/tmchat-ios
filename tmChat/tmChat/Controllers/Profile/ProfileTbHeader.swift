@@ -12,41 +12,47 @@ class ProfileTbHeader: UITableViewHeaderFooterView {
 
     static let id = "ProfileTbHeader"
     
-    var img = UIImageView(contentMode: .scaleAspectFill,
-                          cornerRadius: 0)
-    
     var contentStack = UIStackView(axis: .vertical,
                                    alignment: .fill,
-                                   spacing: 0,
+                                   spacing: 14,
                                    edgeInsets: UIEdgeInsets(edges: 16))
+
+    var topStack = UIStackView(axis: .horizontal)
+
+    var nameActiveDateStack = UIStackView(axis: .vertical)
     
-    var name = UILabel(font: .sb_16_m,
-                       color: .blade,
-                       alignment: .left,
-                       numOfLines: 0,
-                       text: "name ")
-    
-    var username = UILabel(font: .text_14_r,
-                           color: .accent,
+    var fullName = UILabel(font: .sb_16_m,
+                           color: .blade,
                            alignment: .left,
-                           numOfLines: 0, text: "username")
+                           numOfLines: 0,
+                           text: "username")
     
-    var lastActiveDate = UILabel(font: .text_14_r,
+    var lastActiveDate = UILabel(font: .text_12_r,
                                  color: .lee,
                                  alignment: .left,
                                  numOfLines: 0,
                                  text: "last active date")
+
+    var editBtn: IconBtn = {
+        let button = IconBtn(image: UIImage(named: "edit-settings"), color: .blade)
+        button.backgroundColor = .bg
+        button.layer.borderColor = UIColor.onBg1.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 10
+        return button
+    }()
     
     var btnStack = UIStackView(axis: .horizontal,
                                alignment: .fill,
                                spacing: 10)
     
-    
     var moreBtn: IconBtn = {
-        let b = IconBtn(image: UIImage(named: "h-more-20")?.withRenderingMode(.alwaysTemplate), color: .blade)
-        b.backgroundColor = .onBg
+        let b = IconBtn(image: UIImage(named: "h-more-20")?.withRenderingMode(.alwaysTemplate), color: .accent)
+        b.backgroundColor = .bg
         b.layer.cornerRadius = 10
-        b.easy.layout(Size(44))
+        b.layer.borderColor = UIColor.onBg1.cgColor
+        b.layer.borderWidth = 1
+        b.easy.layout(Size(40))
         return b
     }()
     
@@ -57,60 +63,40 @@ class ProfileTbHeader: UITableViewHeaderFooterView {
         b.easy.layout(Size(44))
         return b
     }()
-    
-    var contactsBtn: IconBtn = {
-        let b = IconBtn(image: UIImage(named: "contacts")?.withRenderingMode(.alwaysTemplate), color: .blade)
-        b.backgroundColor = .onBg
+
+    var notificationBtn: IconBtn = {
+        let b = IconBtn(image: UIImage(named: "bell-empty")?.withRenderingMode(.alwaysTemplate), color: .accent)
+        b.backgroundColor = .bg
         b.layer.cornerRadius = 10
-        b.easy.layout(Size(44))
+        b.layer.borderColor = UIColor.onBg1.cgColor
+        b.layer.borderWidth = 1
+        b.easy.layout(Size(40))
         return b
     }()
 
-    var notificationBtn: IconBtn = {
-        let b = IconBtn(image: UIImage(named: "bell-empty")?.withRenderingMode(.alwaysTemplate), color: .blade)
-        b.backgroundColor = .onBg
+    var callBtn: IconBtn = {
+        let b = IconBtn(image: UIImage(named: "call")?.withRenderingMode(.alwaysTemplate), color: .accent)
+        b.backgroundColor = .bg
         b.layer.cornerRadius = 10
-        b.easy.layout(Size(44))
+        b.layer.borderColor = UIColor.onBg1.cgColor
+        b.layer.borderWidth = 1
+        b.easy.layout(Size(40))
         return b
     }()
 
     var fabBtn: FabBtn = {
-        let b = FabBtn(title: "new_post".localized(), iconName: "add-circle")
-        b.bg.layoutMargins.top = 12
-        b.bg.layoutMargins.bottom = 12
-        b.layer.cornerRadius = 22
+        let b = FabBtn(title: "create_new_post".localized(), iconName: "add-circle-clear")
+        b.bg.layoutMargins.top = 10
+        b.bg.layoutMargins.bottom = 10
+        b.layer.cornerRadius = 10
         return b
     }()
-    
-    var infoStack = UIStackView(axis: .horizontal,
-                                alignment: .top,
-                                spacing: 20,
-                                edgeInsets: UIEdgeInsets(verticalEdges: 16))
-    
-    var infoIcon = UIImageView(contentMode: .scaleAspectFill,
-                               cornerRadius: 0,
-                               image: UIImage(named: "info"),
-                               backgroundColor: .clear)
-    
-    var info = UILabel(font: .text_14_r,
-                       color: .blade,
-                       alignment: .left,
-                       numOfLines: 0,
-                       text: "info text ")
+
+    var infoView = ProfileInfoView()
     
     var countStack = UIStackView(axis: .horizontal,
                                  alignment: .fill,
                                  spacing: 20, edgeInsets: UIEdgeInsets(verticalEdges: 6))
-    
-    var count = UILabel(font: .text_14_m,
-                        color: .accent,
-                        alignment: .left,
-                        numOfLines: 0,
-                        text: "post count: 10")
-    
-    var searchBtn = IconBtn(image: UIImage(named: "search")?
-                                    .withRenderingMode(.alwaysTemplate),
-                            color: .accent)
     
     
     override init(reuseIdentifier: String?) {
@@ -125,49 +111,44 @@ class ProfileTbHeader: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
         
-    func setupOther(){
-        contactsBtn.removeFromSuperview()
-//        btnStack.insertArrangedSubview(notificationBtn, at: 1)
+    func setupOther() {
+        editBtn.isHidden = true
         fabBtn.title.text = "send_msg".localized()
-        fabBtn.icon.image = UIImage(named: "pencil")
+        fabBtn.icon.image = UIImage(named: "Chat")
+        callBtn.isHidden = false
+        moreBtn.isHidden = false
     }
     
-    func setupView(){
-        contentView.addSubview(img)
-        img.easy.layout([
-            Top(), Leading(), Trailing(), Height(DeviceDimensions.width+DeviceDimensions.topInset)
-        ])
-
+    func setupView() {
         contentView.addSubview(contentStack)
+        contentStack.layer.cornerRadius = 10
+        contentStack.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         contentStack.easy.layout([
-            Top().to(img, .bottom), Leading(), Trailing(), Bottom()
+            Edges()
         ])
+        contentStack.backgroundColor = .bg
     }
     
-    func setupContentStack(){
-        contentStack.addArrangedSubviews([name,
-                                          username,
-                                          lastActiveDate,
+    func setupContentStack() {
+        let separator = seperator()
+
+        contentStack.addArrangedSubviews([topStack,
                                           btnStack,
-                                          seperator(),
-                                          infoStack,
-                                          seperator(),
-                                          countStack ])
-        
-        contentStack.setCustomSpacing(2, after: name)
-        contentStack.setCustomSpacing(2, after: username)
-        contentStack.setCustomSpacing(16, after: lastActiveDate)
-        contentStack.setCustomSpacing(20, after: btnStack)
+                                          separator,
+                                          infoView])
+        contentStack.isLayoutMarginsRelativeArrangement = true
+        contentStack.layoutMargins.top = 20
     }
     
-    func setupRows(){
-        btnStack.addArrangedSubviews([moreBtn,
-                                      contactsBtn,
-                                      fabBtn])
-        infoStack.addArrangedSubviews([infoIcon, info])
-        countStack.addArrangedSubviews([count, searchBtn])
-        
-        infoIcon.easy.layout(Size(20))
+    func setupRows() {
+        topStack.addArrangedSubviews([nameActiveDateStack, editBtn])
+        nameActiveDateStack.addArrangedSubviews([fullName, lastActiveDate])
+        btnStack.addArrangedSubviews([fabBtn, notificationBtn, callBtn, moreBtn])
+
+        notificationBtn.isHidden = true
+        callBtn.isHidden = true
+        moreBtn.isHidden = true
+        infoView.isHidden = true
     }
     
     func seperator() -> UIView {
@@ -177,19 +158,18 @@ class ProfileTbHeader: UITableViewHeaderFooterView {
         return v
     }
     
-    func setupData(data: User?, count: Int){
+    func setupData(data: User?) {
         guard let data = data else { return }
-        img.kf.setImage(with: ApiPath.url(data.avatar ?? ""))
-        img.backgroundColor = UIColor(hexString: data.colorCode ?? "#A5A5A5")
-        name.text = [data.firstName ?? "", data.lastName ?? ""].joined(separator: " ").trimmingCharacters(in: .whitespaces)
-        username.text = data.username
-        self.count.text = ["post_count".localized(), "\(count)"].joined(separator: ": ")
+
+        fullName.text = [data.firstName ?? "", data.lastName ?? ""].joined(separator: " ").trimmingCharacters(in: .whitespaces)
         lastActiveDate.text = data.isActive == true
                                     ? "online".lowercased()
                                     : TimeAgo.shared.getAgo(data.lastLoginAt?.getDate())
-        
-        if data.description == nil {
-            infoStack.removeFromSuperview()
-        }
+        lastActiveDate.isHidden = (lastActiveDate.text?.isEmpty ?? true)
+
+
+        let info = data.description ?? ""
+        infoView.info = info
+        infoView.isHidden = info.isEmpty
     }
 }

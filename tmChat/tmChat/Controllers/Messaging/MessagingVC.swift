@@ -232,10 +232,9 @@ extension MessagingVC: MessagingActionsDelegate {
     }
     
     func call() {
-        let phone = "viewModel.room"
-        if let url = URL(string: "tel://\(phone)") {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
+        guard let roomID = viewModel.room?.uuid, let friend = viewModel.room?.user else { return }
+
+        (UIApplication.shared.delegate as? AppDelegate)?.tabbar?.call(friend: friend, roomID: roomID)
     }
     
     func clearRoom() {

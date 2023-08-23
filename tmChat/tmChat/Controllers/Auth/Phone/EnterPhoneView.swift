@@ -31,7 +31,7 @@ class EnterPhoneView: BaseView {
 
     let phone = TextField(title: "Введите свой телефон".localized(),
                           leadingText: "+993",
-                          placeholder: "Введите свой телефон".localized(),
+                          placeholder: "00 00 00 00",
                           keyboardType: .phonePad,
                           maxCharCount: 8)
     

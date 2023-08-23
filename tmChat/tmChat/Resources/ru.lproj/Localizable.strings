@@ -14,6 +14,29 @@
 "minutes_ago" = " минут назад";
 "just_now" = "только что";
 
+"app_settings" = "Настройки приложения";
+"app_settings_description" = "Профиль, язык, приватность";
+"contacts" = "Контакты";
+"contacts_description" = "Сортировка, управление, поиск";
+"my_cloud" = "Мое облако";
+"my_cloud_description" = "Сохраненные файлы и сообщения";
+"calls" = "Звонки";
+"calls_description" = "История звонков, коференции";
+"help" = "Помощь";
+"help_description" = "Справка, оставитиь отзыв";
+"app_description" = "О приложении, история изменений";
+"notifications" = "Уведомления";
+"notifications_description" = "Состояние, управление, звуки";
+"privacy" = "Конфиденциальность";
+"privacy_description" = "Пароль приложения, каналы";
+"devices" = "Устройства";
+"devices_description" = "Активные сессии";
+"language" = "Язык";
+"language_description" = "Язык приложения";
+"incoming_call" = "Входящий звонок";
+"outgoing_call" = "Исходящий звонок";
+
+"about_yourself" = "О себе";
 "yesterday" = "Вчера";
 "today" = "Сегодня";
 "smth_went_wrong" = "Что-то пошло не так";
@@ -21,6 +44,7 @@
 "no_connection" = "Нет соединения. Проверьте подключение и обновите";
 "no_content" = "Нет контента";
 "settings" = "Настройки";
+"send_comment" = "Оставить комментарий";
 "like" = "Нравится ";
 "likes" = "Нравится ";
 "global_search" = "Глобальный поиск";
@@ -60,7 +84,6 @@
 "call" = "Позвонить";
 "search" = "Поиск";
 "more" = "Еще";
-"notifications" = "Уведомления";
 "see_my_posts" = "Видеть мои публикации";
 "images" = "Фото";
 "videos" = "Видео";
@@ -83,6 +106,7 @@
 "could_not_save" = "Не удалось сохранить";
 "could_not_download" = "Не удалось скачать";
 "new_post" = "Добавить публикацию";
+"create_new_post" = "Создать новый пост";
 "complain" = "Жалоба";
 "delete_post" = "Удалить публикацию";
 "could_not_add" = "Не удалось добавить публикацию";
@@ -94,7 +118,7 @@
 "publish" = "Опубликовать";
 "add_post_placeholder" = "Введите описание публикации";
 "all" = "Все";
-"contacts" = "Только контакты";
+"only_contacts" = "Только контакты";
 "nobody" = "Никто";
 "private_settings" = "Приватные настройки";
 "who_can_see_post" = "Выберите, кто может видеть вашу публикацию";
@@ -110,9 +134,7 @@
 "clear_cache" = "Вы уверены, что хотите очистить кеш?";
 "clear_cache_desc" = "Весь кеш будет удален с этого устройства";
 "update_profile" = "Обновить профиль";
-"privacy" = "Конфиденциальность";
 "memory" = "Кэш";
-"language" = "Язык";
 "delete_acc" = "Удалить аккаунт";
 "logout" = "Выйти";
 "about_us" = "О нас";

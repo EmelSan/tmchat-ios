@@ -21,7 +21,9 @@ class SocketOn {
         
         guard let data = text.data(using: .utf8) else { return }
         let decoder = JSONDecoder()
-        
+
+        NotificationCenter.default.post(name: .socketClientDidReceiveEvent, object: data)
+
         switch event {
         case .connection:
             do {
@@ -81,6 +83,8 @@ class SocketOn {
 
         case .delete:
             print("delete")
+        case .sendSdp:
+            print("send_sdp")
         }
     }
     

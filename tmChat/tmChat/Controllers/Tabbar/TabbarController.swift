@@ -8,6 +8,15 @@
 import UIKit
 
 class TabbarController: BubbleTabBarController {
+
+    private var signalingClient: SignalingClient!
+
+    private lazy var webRTCClient: WebRTCClient = {
+        let client = WebRTCClient()
+        client.delegate = signalingClient
+        return client
+    }()
+    private var callSnackbar = CallSnackbar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +24,7 @@ class TabbarController: BubbleTabBarController {
         
         setupVc()
         connectToSocekt()
+        connectToWebRTC()
         sendContacts()
         
 //        ChatRequests.shared.getContacts { resp in
@@ -38,7 +48,7 @@ class TabbarController: BubbleTabBarController {
                                            image: UIImage(named: "feed"),
                                            selectedImage: UIImage(named: "feed-active"))
 
-        let profile = ProfileVC(type: .own)
+        let profile = ProfileTabVC()
         profile.tabBarItem = UITabBarItem(title: "profile".localized(),
                                            image: UIImage(named: "profile"),
                                            selectedImage: UIImage(named: "profile-active"))
@@ -57,12 +67,96 @@ class TabbarController: BubbleTabBarController {
             SocketClient.shared.connect()
         }
     }
+
+    // MARK: - FIXME: Replace this
+    func connectToWebRTC() {
+        signalingClient = SignalingClient { [weak self] action in
+            guard let self else { return }
+
+            switch action {
+            case var .didRequestLocalSDP(data):
+                guard
+                    let window = UIWindow.currentVisibleWindow,
+                    let friend = data.friendModel,
+                    let roomID = data.roomId
+                else {
+                    return
+                }
+                let avatarURL = ApiPath.url(friend.avatar ?? "")
+                let colorCode = friend.colorCode
+                self.callSnackbar.model = .init(userName: friend.fullName, avatarURL: avatarURL, colorCode: colorCode)
+
+                self.callSnackbar.show(on: window, onAnswer: { [weak self] in
+                    PermissionManager.requestPermission(for: .camera) { [weak self] granted in
+                        guard let self, granted else { return }
+
+                        self.webRTCClient.setup()
+                        self.webRTCClient.answer { [weak self] sdp in
+                            data.candidate = nil
+                            data.sessionDescription = .init(sdp: sdp.sdp, type: .answer)
+                            data.type = data.sessionDescription?.type
+                            self?.signalingClient.sendSDP(data: data)
+                        }
+                        self.callSnackbar.hide()
+                        self.showCall(type: .incoming, friend: friend, roomID: roomID)
+                    }
+                }, onDismiss: { [weak self] in
+                    self?.callSnackbar.hide()
+                    self?.signalingClient.close(friend: friend, roomID: roomID)
+                })
+            case let .didReceiveRemoteSDP(description):
+                self.webRTCClient.set(remoteSdp: description)
+            case let .didReceiveCandidate(candidate):
+                self.webRTCClient.set(remoteCandidate: candidate)
+            case .close:
+                self.callSnackbar.hide()
+                self.webRTCClient.disconnect()
+
+                guard UIWindow.topVisibleViewController is CallVC else { return }
+
+                UIWindow.topVisibleViewController?.dismiss(animated: true)
+            }
+        }
+    }
+
+    // MARK: - FIXME: Replace this
+    func call(friend: User, roomID: String) {
+        PermissionManager.requestPermission(for: .camera) { [weak self] granted in
+            guard let self, granted else { return }
+
+            self.webRTCClient.setup()
+            self.webRTCClient.offer { [weak self] sdp in
+                self?.signalingClient.sendSDP(type: .offer,
+                                              sessionDescription: .init(sdp: sdp.sdp, type: .offer),
+                                              roomID: roomID,
+                                              friend: friend,
+                                              callType: "video")
+            }
+            self.showCall(type: .outgoing, friend: friend, roomID: roomID)
+        }
+    }
+
+    func finishCall(friend: User, roomID: String) {
+        if UIWindow.topVisibleViewController is CallVC {
+            UIWindow.topVisibleViewController?.dismiss(animated: true)
+        }
+        webRTCClient.disconnect()
+        signalingClient.close(friend: friend, roomID: roomID)
+    }
     
-    func sendContacts(){
+    func sendContacts() {
         if AccUserDefaults.contactsSend { return }
         DispatchQueue.global(qos: .background).async { [weak self] in
             guard let _ = self else { return }
             ContactService().sendContactList()
         }
+    }
+
+    private func showCall(type: CallVC.CallType, friend: User, roomID: String, completion: VoidClosure? = nil) {
+        let callVC = CallVC(callType: type, friend: friend, roomID: roomID, webRTCClient: webRTCClient)
+        callVC.modalPresentationStyle = .fullScreen
+        callVC.modalTransitionStyle = .crossDissolve
+
+        UIWindow.topVisibleViewController?.present(callVC, animated: true, completion: completion)
     }
 }

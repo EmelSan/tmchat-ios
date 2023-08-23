@@ -148,7 +148,7 @@ extension OnePostVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTbCell.id, for: indexPath) as! FeedTbCell
         cell.data = viewModel.data[indexPath.row]
-        cell.likeBtn.clickCallback = { [weak self] in
+        cell.likeCallback = { [weak self] in
             self?.viewModel.toggleLike(uuid: cell.data?.uuid ?? "")
         }
         
@@ -156,7 +156,9 @@ extension OnePostVC: UITableViewDataSource, UITableViewDelegate {
             let vc = ProfileVC(type: .user(id: cell.data?.ownerId ?? ""))
             self?.navigationController?.pushViewController(vc, animated: true)
         }
-        
+        cell.commentView.clickCallback = { [weak self] in
+            #warning("handle")
+        }
         cell.userDataStack.trailingBtn.clickCallback = { [weak self] in
             self?.openBottomSheet(id: cell.data?.uuid ?? "", ownerId: cell.data?.owner.id ?? "", files: cell.data?.files ?? [])
         }

@@ -7,6 +7,7 @@
 
 import UIKit
 import EasyPeasy
+import Lottie
 
 class FeedTbCell: UITableViewCell {
 
@@ -20,8 +21,7 @@ class FeedTbCell: UITableViewCell {
     
     var contentStack = UIStackView(axis: .vertical,
                                    alignment: .fill,
-                                   spacing: 10,
-                                   edgeInsets: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
+                                   spacing: 10)
     
     var userDataStack = UserDataStack()
     
@@ -45,10 +45,28 @@ class FeedTbCell: UITableViewCell {
                                alignment: .center,
                                spacing: 10,
                                edgeInsets: UIEdgeInsets(horizontalEdges: 10))
+
+    private var likeAnimationView: LottieAnimationView = {
+        let view = LottieAnimationView(name: "like_animation")
+        view.alpha = 0
+        view.isUserInteractionEnabled = false
+        return view
+    }()
     
     var seenCount = SeenCountView()
+
+    var separator: UIView = {
+        let view = UIView()
+        view.backgroundColor = .onBg1
+        view.easy.layout(Height(1))
+        return view
+    }()
+
+    var commentView = TitleChevronView()
+
+    var likeCallback: (() -> ())?
     
-    var likeBtn = LikeBtn()
+    private var likeBtn = LikeBtn()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -70,15 +88,31 @@ class FeedTbCell: UITableViewCell {
         
     func setupView(){
         contentView.addSubview(contentStack)
+        contentView.addSubview(likeAnimationView)
+
         contentStack.easy.layout([
             Top(), Leading(), Trailing(), Bottom(10)
         ])
-        
+        likeAnimationView.easy.layout(Edges())
+        contentView.backgroundColor = .bg
         textWrapper.addArrangedSubview(text)
         
-        btnStack.addArrangedSubviews([seenCount,
-                                      UIView(),
-                                      likeBtn])
+        btnStack.addArrangedSubviews([likeBtn, UIView(), seenCount])
+
+        likeBtn.clickCallback = { [weak self] in
+            self?.likeCallback?()
+        }
+        userDataStack.doubleClickCallback = { [weak self] in
+            guard let self = self else { return }
+            guard self.likeBtn.data?.isLiked != true else { return }
+
+//            self.likeAnimationView.alpha = 1
+//
+//            self.likeAnimationView.play { [weak self] _ in
+//                self?.likeAnimationView.alpha = 0
+//            }
+            self.likeCallback?()
+        }
     }
     
     func setupCollectionView(){
@@ -108,8 +142,11 @@ class FeedTbCell: UITableViewCell {
             mediaCollectionView.removeFromSuperview()
         }
         
-        contentStack.addArrangedSubviews([textWrapper,
-                                          btnStack])
+        contentStack.addArrangedSubviews([textWrapper, btnStack, separator, commentView])
+        contentStack.setCustomSpacing(10, after: btnStack)
+        contentStack.setCustomSpacing(0, after: separator)
+
+        #warning("Добавить снизу спейсинг 10, если нельзя оставлять комментарии")
     }
     
     func setupData(){
@@ -121,8 +158,9 @@ class FeedTbCell: UITableViewCell {
         text.text = data.description
         seenCount.title.text = data.viewCount
         likeBtn.isHidden = !data.isLikeable
-        likeBtn.data = LikeData(isLiked: data.isLiked,
-                                count: data.likeCount )
+        likeBtn.data = LikeData(isLiked: data.isLiked, count: data.likeCount)
+        #warning("сделать локализацию")
+        commentView.title = "send_comment".localized()
     }
 }
 

@@ -41,7 +41,11 @@ extension UIFont {
     
     static var text_14_r = UIFont.regular(size: 14)
 
+    static var text_12_r = UIFont.regular(size: 12)
+
     static var minitext_12 = UIFont.regular(size: 12)
 
     static var comments_10 = UIFont.regular(size: 10)
+
+    static let tab_label = UIFont.bold(size: 16)
 }

@@ -24,6 +24,10 @@ struct Room: Codable, Equatable {
     var isActive: Bool?
     var draft: String?
 
+    var user: User? {
+        .init(id: userId, username: roomName, avatar: avatar, colorCode: colorCode, lastLoginAt: lastLoginAt, isActive: isActive)
+    }
+
 //    var message: Message?
 //    var unreadMessages: [Message]?
 //    var unreadCount: Int?

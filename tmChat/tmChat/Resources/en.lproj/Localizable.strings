@@ -14,6 +14,29 @@
 "minutes_ago" = " minutes ago";
 "just_now" = "just now";
 
+"app_settings" = "Настройки приложения";
+"app_settings_description" = "Профиль, язык, приватность";
+"contacts" = "Контакты";
+"contacts_description" = "Сортировка, управление, поиск";
+"my_cloud" = "Мое облако";
+"my_cloud_description" = "Сохраненные файлы и сообщения";
+"calls" = "Звонки";
+"calls_description" = "История звонков, коференции";
+"help" = "Помощь";
+"help_description" = "Справка, оставитиь отзыв";
+"app_description" = "О приложении, история изменений";
+"notifications" = "Notifications";
+"notifications_description" = "Состояние, управление, звуки";
+"privacy" = "Privacy";
+"privacy_description" = "Пароль приложения, каналы";
+"devices" = "Устройства";
+"devices_description" = "Активные сессии";
+"language" = "Language";
+"language_description" = "App language";
+"incoming_call" = "Входящий звонок";
+"outgoing_call" = "Исходящий звонок";
+
+"about_yourself" = "About me";
 "yesterday" = "Yesterday";
 "today" = "Today";
 "smth_went_wrong" = "Something went wrong";
@@ -21,6 +44,7 @@
 "no_connection" = "No connection. Check your connection and refresh";
 "no_content" = "No content";
 "settings" = "Settings";
+"send_comment" = "Leave a comment";
 "like" = "Like";
 "likes" = "Liked";
 "global_search" = "Global search";
@@ -60,7 +84,6 @@
 "call" = "Call";
 "search" = "Search";
 "more" = "More";
-"notifications" = "Notifications";
 "see_my_posts" = "See my posts";
 "images" = "Photos";
 "videos" = "Videos";
@@ -84,6 +107,7 @@
 "could_not_save" = "Could not save";
 "could_not_download" = "Could not download";
 "new_post" = "Add post";
+"create_new_post" = "Create new post";
 "complain" = "Report";
 "delete_post" = "Delete post";
 "could_not_add" = "Could not add post";
@@ -95,7 +119,7 @@
 "publish" = "Publish";
 "add_post_placeholder" = "Enter post description";
 "all" = "All";
-"contacts" = "Contacts only";
+"only_contacts" = "Contacts only";
 "nobody" = "Nobody";
 "private_settings" = "Private settings";
 "who_can_see_post" = "Select who can see your post";
@@ -111,9 +135,7 @@
 "clear_cache" = "Are you sure you want to clear cache?";
 "clear_cache_desc" = "All cache will be deleted from this device";
 "update_profile" = "Update profile";
-"privacy" = "Privacy";
 "memory" = "Cache";
-"language" = "Language";
 "delete_acc" = "Delete account";
 "logout" = "Logout";
 "about_us" = "About us";

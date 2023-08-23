@@ -10,7 +10,7 @@ import EasyPeasy
 
 class IconBtn: BaseBtn {
 
-    init(image: UIImage?, color: UIColor){
+    init(image: UIImage?, color: UIColor) {
         super.init(frame: .zero)
         
         setImage(image, for: .normal)

@@ -48,6 +48,17 @@ extension String {
         let date = dateFormatter.date(from: self)
         return date
     }
+
+    func convertToDictionary() -> [String: Any]? {
+        if let data = self.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                debugPrint(error.localizedDescription)
+            }
+        }
+        return nil
+    }
 }
 
 extension String {
