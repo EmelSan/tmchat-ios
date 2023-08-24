@@ -11,8 +11,8 @@ import WebRTC
 struct SDPData: Codable {
 
     var type: String? = ""
-    var candidate: IceCandidate? = nil
-    var sessionDescription: SessionDescription? = nil
+    var candidate: String? = ""
+    var sessionDescription: String? = ""
     var friend: String? = ""
     var roomId: String? = ""
     var call_type: String? = ""
@@ -22,6 +22,18 @@ struct SDPData: Codable {
         guard let friend = friend?.data(using: .utf8) else { return nil }
 
         return try? JSONDecoder().decode(User.self, from: friend)
+    }
+
+    var sessionModel: SessionDescription? {
+        guard let sessionDescription = sessionDescription?.data(using: .utf8) else { return nil }
+
+        return try? JSONDecoder().decode(SessionDescription.self, from: sessionDescription)
+    }
+
+    var candidateModel: IceCandidate? {
+        guard let candidate = candidate?.data(using: .utf8) else { return nil }
+
+        return try? JSONDecoder().decode(IceCandidate.self, from: candidate)
     }
 }
 
@@ -66,9 +78,9 @@ struct SessionDescription: Codable {
         return RTCSessionDescription(type: type, sdp: sdp)
     }
 
-    init(sdp: String, type: SdpType) {
+    init(sdp: String) {
         self.sdp = sdp
-        self.type = type.rawValue
+        self.type = ""
     }
 }
 

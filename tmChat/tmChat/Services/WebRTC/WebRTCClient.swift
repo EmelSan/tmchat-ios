@@ -126,6 +126,14 @@ final class WebRTCClient: NSObject {
                               fps: Int(fps.maxFrameRate))
 
         localVideoTrack?.add(renderer)
+        setVideoEnabled(true)
+    }
+
+    func stopCaptureLocalVideo() {
+        guard let capturer = videoCapturer as? RTCCameraVideoCapturer else { return }
+
+        capturer.stopCapture()
+        setVideoEnabled(false)
     }
 
     // MARK: - Actions
@@ -139,10 +147,6 @@ final class WebRTCClient: NSObject {
         remoteVideoTrack = nil
 
         audioSessionToDefaults()
-    }
-
-    func setVideoEnabled(_ isEnabled: Bool) {
-        setTrackEnabled(RTCVideoTrack.self, isEnabled: isEnabled)
     }
 
     func setAudioEnabled(_ isEnabled: Bool) {
@@ -183,6 +187,10 @@ final class WebRTCClient: NSObject {
     }
 
     // MARK: - Private Methods
+
+    private func setVideoEnabled(_ isEnabled: Bool) {
+        setTrackEnabled(RTCVideoTrack.self, isEnabled: isEnabled)
+    }
 
     private func setLocalSDP(_ sdp: RTCSessionDescription, completion: VoidClosure? = nil) {
         peerConnection?.setLocalDescription(sdp, completionHandler: { (error) in

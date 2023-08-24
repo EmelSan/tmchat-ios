@@ -63,6 +63,7 @@ final class CallSnackbar: UIView {
     func show(on view: UIView, onAnswer: @escaping VoidClosure, onDismiss: @escaping VoidClosure) {
         hide()
         view.addSubview(self)
+        SoundPlayer.shared.startRingtone()
 
         easy.layout([
             Leading(10), Top(10).to(view.safeAreaLayoutGuide, .top), Trailing(10)
@@ -72,6 +73,7 @@ final class CallSnackbar: UIView {
     }
 
     func hide() {
+        SoundPlayer.shared.stopRingtone()
         removeFromSuperview()
     }
 

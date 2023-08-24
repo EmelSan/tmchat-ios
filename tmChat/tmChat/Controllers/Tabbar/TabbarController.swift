@@ -37,7 +37,7 @@ class TabbarController: BubbleTabBarController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    func setupVc(){
+    func setupVc() {
         let chatlist = ChatlistVC()
         chatlist.tabBarItem = UITabBarItem(title: "chats".localized(),
                                            image: UIImage(named: "chat"),
@@ -61,7 +61,7 @@ class TabbarController: BubbleTabBarController {
         setViewControllers([chatlist, feed, profile], animated: false)
     }
     
-    func connectToSocekt(){
+    func connectToSocekt() {
         ChatRequests.shared.getRooms { resp in
             RoomTable.shared.upsertRooms(rooms: resp?.data ?? [])
             SocketClient.shared.connect()
@@ -91,20 +91,27 @@ class TabbarController: BubbleTabBarController {
                         guard let self, granted else { return }
 
                         self.webRTCClient.setup()
+
+                        if let sessionDescription = data.sessionDescription?.data(using: .utf8),
+                           let session = try? JSONDecoder().decode(SessionDescription.self, from: sessionDescription) {
+                            self.webRTCClient.set(remoteSdp: session)
+                            self.signalingClient.didReceivedRemoteSDP = true
+                        }
                         self.webRTCClient.answer { [weak self] sdp in
-                            data.candidate = nil
-                            data.sessionDescription = .init(sdp: sdp.sdp, type: .answer)
-                            data.type = data.sessionDescription?.type
-                            self?.signalingClient.sendSDP(data: data)
+                            self?.signalingClient.sendAnswer(sessionDescription: .init(sdp: sdp.sdp),
+                                                             friend: friend,
+                                                             roomID: roomID,
+                                                             callType: data.call_type)
                         }
                         self.callSnackbar.hide()
                         self.showCall(type: .incoming, friend: friend, roomID: roomID)
                     }
                 }, onDismiss: { [weak self] in
                     self?.callSnackbar.hide()
-                    self?.signalingClient.close(friend: friend, roomID: roomID)
+                    self?.signalingClient.sendClose(friend: friend, roomID: roomID)
                 })
             case let .didReceiveRemoteSDP(description):
+                self.signalingClient.didReceivedRemoteSDP = true
                 self.webRTCClient.set(remoteSdp: description)
             case let .didReceiveCandidate(candidate):
                 self.webRTCClient.set(remoteCandidate: candidate)
@@ -117,6 +124,9 @@ class TabbarController: BubbleTabBarController {
                 UIWindow.topVisibleViewController?.dismiss(animated: true)
             }
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            SoundPlayer.shared.startRingtone()
+        }
     }
 
     // MARK: - FIXME: Replace this
@@ -126,11 +136,7 @@ class TabbarController: BubbleTabBarController {
 
             self.webRTCClient.setup()
             self.webRTCClient.offer { [weak self] sdp in
-                self?.signalingClient.sendSDP(type: .offer,
-                                              sessionDescription: .init(sdp: sdp.sdp, type: .offer),
-                                              roomID: roomID,
-                                              friend: friend,
-                                              callType: "video")
+                self?.signalingClient.sendOffer(sessionDescription: .init(sdp: sdp.sdp), friend: friend, roomID: roomID)
             }
             self.showCall(type: .outgoing, friend: friend, roomID: roomID)
         }
@@ -141,7 +147,7 @@ class TabbarController: BubbleTabBarController {
             UIWindow.topVisibleViewController?.dismiss(animated: true)
         }
         webRTCClient.disconnect()
-        signalingClient.close(friend: friend, roomID: roomID)
+        signalingClient.sendClose(friend: friend, roomID: roomID)
     }
     
     func sendContacts() {

@@ -21,58 +21,106 @@ final class SignalingClient {
 
     // MARK: - Public Properties
 
-    var callback: ((Action) -> ())
+    var callback: Closure<Action>
+
+    var didReceivedRemoteSDP = false {
+        didSet {
+            guard didReceivedRemoteSDP, !cachedLocalCandidates.isEmpty else { return }
+            guard let cachedFriend, let cachedRoomID, let cachedCallType else { return }
+
+
+            cachedLocalCandidates.forEach {
+                sendCandidate(candidate: .init(from: $0), friend: cachedFriend, roomID: cachedRoomID, callType: cachedCallType)
+            }
+            cachedLocalCandidates = []
+        }
+    }
 
     // MARK: - Private Properties
 
     private let decoder = JSONDecoder()
     private let encoder = JSONEncoder()
+    private var cachedFriend: User?
+    private var cachedRoomID: String?
+    private var cachedCallType: String?
+    private var cachedLocalCandidates = [RTCIceCandidate]()
 
     // MARK: - Init
 
-    init(callback: @escaping ((Action) -> ())) {
+    init(callback: @escaping Closure<Action>) {
         self.callback = callback
         observeWebSocket()
     }
 
     // MARK: - Public Methods
 
-    func sendSDP(type: SdpType,
-                 sessionDescription: SessionDescription? = nil,
-                 candidate: IceCandidate? = nil,
-                 roomID: String? = nil,
-                 friend: User? = nil,
-                 callType: String? = "audio") {
-        var friendStr: String?
-
-        if let friend, let friendData = try? encoder.encode(friend) {
-            friendStr = String(data: friendData, encoding: .utf8)
-        }
-        let sdp = SDPData(type: type.rawValue,
-                          candidate: candidate,
-                          sessionDescription: sessionDescription,
-                          friend: friendStr,
-                          roomId: roomID,
-                          call_type: callType)
-        sendSDP(data: sdp)
+    func sendAnswer(sessionDescription: SessionDescription, friend: User, roomID: String, callType: String?) {
+        let type = SdpType.answer.rawValue
+        var sessionDescription = sessionDescription
+        sessionDescription.type = type
+        let data = SDPData(type: type,
+                           sessionDescription: toString(model: sessionDescription),
+                           friend: toString(model: friend),
+                           roomId: roomID,
+                           call_type: callType)
+        cachedFriend = friend
+        cachedRoomID = roomID
+        cachedCallType = callType
+        sendSDP(data: data)
     }
 
-    func sendSDP(data: SDPData) {
+    func sendOffer(sessionDescription: SessionDescription, friend: User, roomID: String, callType: String = "video") {
+        let type = SdpType.offer.rawValue
+        var sessionDescription = sessionDescription
+        sessionDescription.type = type
+        let data = SDPData(type: type,
+                           sessionDescription: toString(model: sessionDescription),
+                           friend: toString(model: friend),
+                           roomId: roomID,
+                           call_type: callType)
+        cachedFriend = friend
+        cachedRoomID = roomID
+        cachedCallType = callType
+        sendSDP(data: data)
+    }
+
+    func sendCandidate(candidate: IceCandidate, friend: User, roomID: String, callType: String) {
+        let type = SdpType.candidate.rawValue
+        let data = SDPData(type: type, candidate: toString(model: candidate), friend: toString(model: friend), roomId: roomID)
+        sendSDP(data: data)
+    }
+
+    func sendClose(friend: User, roomID: String) {
+        let type = SdpType.close.rawValue
+        let data = SDPData(type: type, friend: toString(model: friend), roomId: roomID)
+        cachedFriend = nil
+        cachedRoomID = nil
+        cachedCallType = nil
+        cachedLocalCandidates = []
+        didReceivedRemoteSDP = false
+        sendSDP(data: data)
+    }
+
+    // MARK: - Private Methods
+
+    private func observeWebSocket() {
+        NotificationCenter.default.addObserver(self, selector: #selector(socketDidReceiveEvent(notification:)),
+                                               name: .socketClientDidReceiveEvent,
+                                               object: nil)
+    }
+
+    private func sendSDP(data: SDPData) {
         SocketClient.shared.sendMsg(data: DataSDP(sdp_data: data), emit: .sendSDP)
     }
 
-    func close(friend: User, roomID: String) {
-        sendSDP(type: .close, sessionDescription: .init(sdp: "", type: .close), roomID: roomID, friend: friend)
-    }
-
-    func didReceiveData(data: DataSDP) {
-        guard let sdp = data.sdp_data, let sessionDescription = sdp.sessionDescription else { return }
+    private func didReceiveData(data: DataSDP) {
+        guard let sdp = data.sdp_data, let sessionDescription = sdp.sessionModel else { return }
 
         switch SdpType(rawValue: sessionDescription.type) {
         case .offer:
             callback(.didRequestLocalSDP(sdp))
         case .candidate:
-            guard let candidate = sdp.candidate else { return }
+            guard let candidate = sdp.candidateModel else { return }
 
             callback(.didReceiveCandidate(candidate))
         case .answer:
@@ -82,14 +130,6 @@ final class SignalingClient {
         default:
             break
         }
-    }
-
-    // MARK: - Private Methods
-
-    private func observeWebSocket() {
-        NotificationCenter.default.addObserver(self, selector: #selector(socketDidReceiveEvent(notification:)),
-                                               name: .socketClientDidReceiveEvent,
-                                               object: nil)
     }
 
     @objc
@@ -106,6 +146,16 @@ final class SignalingClient {
             debugPrint("PARSING ERROR: \(error)")
         }
     }
+
+    private func sendLocalCandidates() {
+
+    }
+
+    private func toString<T: Codable>(model: T?) -> String? {
+        guard let model, let encoded = try? encoder.encode(model) else { return nil }
+
+        return String(data: encoded, encoding: .utf8)
+    }
 }
 
 // MARK: - WebRTCClientDelegate
@@ -113,6 +163,12 @@ final class SignalingClient {
 extension SignalingClient: WebRTCClientDelegate {
 
     func webRTCClient(_ client: WebRTCClient, didReceiveCandidate candidate: RTCIceCandidate) {
-        sendSDP(type: .candidate, candidate: .init(from: candidate))
+        guard didReceivedRemoteSDP else {
+            cachedLocalCandidates.append(candidate)
+            return
+        }
+        guard let cachedFriend, let cachedRoomID, let cachedCallType else { return }
+
+        sendCandidate(candidate: .init(from: candidate), friend: cachedFriend, roomID: cachedRoomID, callType: cachedCallType)
     }
 }

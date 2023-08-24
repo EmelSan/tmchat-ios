@@ -32,7 +32,18 @@ final class CallVC: UIViewController {
     private let cameraButton = BluredButton(image: UIImage(named: "camera-off"))
     private let microButton = BluredButton(image: UIImage(named: "mic-on"))
     private let avatarImageView = UIImageView(contentMode: .scaleAspectFill, cornerRadius: 0)
+
+    private lazy var localVideoView = VideoView()
+    private lazy var remoteVideoView = VideoView()
     private let videoContainer = UIView()
+
+    private let overlayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = .zero
+        view.isUserInteractionEnabled = false
+        return view
+    }()
 
     private let bottomBar: UIStackView = {
         let stack = UIStackView()
@@ -44,8 +55,6 @@ final class CallVC: UIViewController {
     private let friend: User
     private let roomID: String
     private let webRTCClient: WebRTCClient
-    private lazy var videoVC = VideoCallVC(webRTCClient: webRTCClient)
-
 
     private var isOnVolume = true {
         didSet {
@@ -59,23 +68,23 @@ final class CallVC: UIViewController {
             if isOnCamera {
                 if PermissionManager.hasPermission(for: .camera) {
                     cameraButton.setImage(named: "camera-on")
-                    webRTCClient.setVideoEnabled(true)
-                    add(child: videoVC, container: videoContainer)
+                    webRTCClient.startCaptureLocalVideo(renderer: localVideoView)
+                    localVideoView.isHidden = false
                 } else {
                     PermissionManager.requestPermission(for: .camera) { [weak self] granted in
-                        guard granted else {
+                        guard let self, granted else {
                             self?.isOnCamera.toggle()
                             return
                         }
-
-                        self?.cameraButton.setImage(named: "camera-on")
-                        self?.webRTCClient.setVideoEnabled(true)
+                        self.localVideoView.isHidden = false
+                        self.cameraButton.setImage(named: "camera-on")
+                        self.webRTCClient.startCaptureLocalVideo(renderer: self.localVideoView)
                     }
                 }
             } else {
                 cameraButton.setImage(named: "camera-off")
-                webRTCClient.setVideoEnabled(false)
-                remove(child: videoVC)
+                webRTCClient.stopCaptureLocalVideo()
+                localVideoView.isHidden = true
             }
         }
     }
@@ -134,6 +143,19 @@ final class CallVC: UIViewController {
         isOnCamera = true
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(proximityStateChanged(_:)), name: UIDevice.proximityStateDidChangeNotification, object: nil)
+        UIDevice.current.isProximityMonitoringEnabled = true
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        UIDevice.current.isProximityMonitoringEnabled = false
+    }
+
     // MARK: - Private Methods
 
     private func setupViews() {
@@ -142,6 +164,10 @@ final class CallVC: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(subtitleLabel)
         view.addSubview(bottomBar)
+        view.addSubview(overlayView)
+
+        videoContainer.addSubview(remoteVideoView)
+        videoContainer.addSubview(localVideoView)
 
         bottomBar.addArrangedSubviews([volumeButton, cameraButton, microButton, UIView(), rejectButton])
         avatarImageView.easy.layout(Edges())
@@ -156,9 +182,17 @@ final class CallVC: UIViewController {
         bottomBar.easy.layout([
             Leading(30), Trailing(30), Bottom(30)
         ])
+        remoteVideoView.easy.layout(Edges())
+        localVideoView.easy.layout(Trailing(16), Bottom(16).to(bottomBar, .top), Height(200), Width(120))
+        overlayView.easy.layout(Edges())
 
         rejectButton.backgroundColor = .alert
         rejectButton.layer.cornerRadius = 20
+
+        localVideoView.contentMode = .scaleAspectFill
+        localVideoView.layer.cornerRadius = 24
+        localVideoView.clipsToBounds = true
+        remoteVideoView.isUserInteractionEnabled = false
     }
 
     private func bind() {
@@ -192,6 +226,31 @@ final class CallVC: UIViewController {
             titleLabel.text = friend.fullName
         } else {
             titleLabel.text = friend.username
+        }
+    }
+
+    @objc
+    private func proximityStateChanged(_ notification: Notification) {
+        if UIDevice.current.proximityState {
+            darkenScreen()
+        } else {
+            brightenScreen()
+        }
+    }
+
+    private func darkenScreen() {
+        UIView.animate(withDuration: 0.5) {
+            self.overlayView.alpha = 1
+        } completion: { [weak self] _ in
+            self?.view.isUserInteractionEnabled = false
+        }
+    }
+
+    private func brightenScreen() {
+        UIView.animate(withDuration: 0.5) {
+            self.overlayView.alpha = .zero
+        } completion: { [weak self] _ in
+            self?.view.isUserInteractionEnabled = true
         }
     }
 }

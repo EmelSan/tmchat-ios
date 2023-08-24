@@ -224,6 +224,9 @@
 		C67A7F4D2A93FF38002DDDF4 /* ProfileTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A7F4C2A93FF38002DDDF4 /* ProfileTabVC.swift */; };
 		C67A7F512A940089002DDDF4 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A7F502A940089002DDDF4 /* SettingsCell.swift */; };
 		C67A7F542A9420ED002DDDF4 /* AppSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A7F532A9420ED002DDDF4 /* AppSettingsVC.swift */; };
+		C6D2C23F2A976A880083D06C /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C23E2A976A880083D06C /* SoundPlayer.swift */; };
+		C6D2C2412A9784570083D06C /* LocalVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C2402A9784570083D06C /* LocalVideoView.swift */; };
+		C6D2C2432A9785440083D06C /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C2422A9785440083D06C /* VideoView.swift */; };
 		C6D5B5B32A91644900D50A57 /* like_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = C6D5B5B22A91644900D50A57 /* like_animation.json */; };
 		C6D5B5B52A91661F00D50A57 /* TitleChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5B5B42A91661F00D50A57 /* TitleChevronView.swift */; };
 		C6D5B5B72A91724600D50A57 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5B5B62A91724600D50A57 /* ProfileInfoView.swift */; };
@@ -446,7 +449,7 @@
 		C0FD76EF29F968AA00F47FD6 /* tmchat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tmchat.entitlements; sourceTree = "<group>"; };
 		C3DD52E38434C45BC794EC4A /* Pods_tmchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tmchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C627D0C62A94D2500010E585 /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebRTCClient.swift; path = tmchat/Services/WebRTC/WebRTCClient.swift; sourceTree = SOURCE_ROOT; };
-		C627D0C92A94E1020010E585 /* VideoCallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoCallVC.swift; path = tmChat/Controllers/VideoCall/VideoCallVC.swift; sourceTree = SOURCE_ROOT; };
+		C627D0C92A94E1020010E585 /* VideoCallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoCallVC.swift; path = tmchat/Controllers/Call/VideoCallVC.swift; sourceTree = SOURCE_ROOT; };
 		C627D0CE2A94E6580010E585 /* CallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CallVC.swift; path = tmChat/Controllers/Call/CallVC.swift; sourceTree = SOURCE_ROOT; };
 		C627D0D02A94E8A40010E585 /* BluredButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BluredButton.swift; path = tmChat/Components/Button/BluredButton.swift; sourceTree = SOURCE_ROOT; };
 		C627D0D22A94F1B70010E585 /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignalingClient.swift; path = tmchat/Services/WebRTC/SignalingClient.swift; sourceTree = SOURCE_ROOT; };
@@ -457,6 +460,9 @@
 		C67A7F4C2A93FF38002DDDF4 /* ProfileTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileTabVC.swift; path = tmChat/Controllers/ProfileTab/ProfileTabVC.swift; sourceTree = SOURCE_ROOT; };
 		C67A7F502A940089002DDDF4 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsCell.swift; path = tmChat/Controllers/ProfileTab/SettingsCell.swift; sourceTree = SOURCE_ROOT; };
 		C67A7F532A9420ED002DDDF4 /* AppSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettingsVC.swift; path = tmChat/Controllers/ProfileTab/AppSettings/AppSettingsVC.swift; sourceTree = SOURCE_ROOT; };
+		C6D2C23E2A976A880083D06C /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SoundPlayer.swift; path = tmChat/Services/SoundPlayer.swift; sourceTree = SOURCE_ROOT; };
+		C6D2C2402A9784570083D06C /* LocalVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalVideoView.swift; path = tmChat/Controllers/Call/LocalVideoView.swift; sourceTree = SOURCE_ROOT; };
+		C6D2C2422A9785440083D06C /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoView.swift; path = tmChat/Controllers/Call/VideoView.swift; sourceTree = SOURCE_ROOT; };
 		C6D5B5B22A91644900D50A57 /* like_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = like_animation.json; sourceTree = "<group>"; };
 		C6D5B5B42A91661F00D50A57 /* TitleChevronView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TitleChevronView.swift; path = tmChat/Components/TitleChevronView.swift; sourceTree = SOURCE_ROOT; };
 		C6D5B5B62A91724600D50A57 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileInfoView.swift; path = tmChat/Controllers/Profile/Views/ProfileInfoView.swift; sourceTree = SOURCE_ROOT; };
@@ -762,6 +768,7 @@
 				C03948EA29EDFBFD006B7582 /* DownloadService.swift */,
 				C0B46AAE29FC57EA00D2A9B1 /* CacheManager.swift */,
 				C6F767B42A9632DD00535EE7 /* PermissionManager.swift */,
+				C6D2C23E2A976A880083D06C /* SoundPlayer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -929,7 +936,6 @@
 			isa = PBXGroup;
 			children = (
 				C627D0CB2A94E5920010E585 /* Call */,
-				C627D0C82A94E0DB0010E585 /* VideoCall */,
 				C67A7F4B2A93FF10002DDDF4 /* ProfileTab */,
 				C03948EC29EE8AC2006B7582 /* Complain */,
 				C0EE17CE29BBEB400032F165 /* Auth */,
@@ -1192,18 +1198,13 @@
 			path = Username;
 			sourceTree = "<group>";
 		};
-		C627D0C82A94E0DB0010E585 /* VideoCall */ = {
-			isa = PBXGroup;
-			children = (
-				C627D0C92A94E1020010E585 /* VideoCallVC.swift */,
-			);
-			path = VideoCall;
-			sourceTree = "<group>";
-		};
 		C627D0CB2A94E5920010E585 /* Call */ = {
 			isa = PBXGroup;
 			children = (
+				C627D0C92A94E1020010E585 /* VideoCallVC.swift */,
 				C627D0CE2A94E6580010E585 /* CallVC.swift */,
+				C6D2C2402A9784570083D06C /* LocalVideoView.swift */,
+				C6D2C2422A9785440083D06C /* VideoView.swift */,
 			);
 			path = Call;
 			sourceTree = "<group>";
@@ -1528,7 +1529,9 @@
 				C0EE175829B9A8430032F165 /* ProfileImg.swift in Sources */,
 				C0EE176F29B9C5360032F165 /* ChatListTbCell.swift in Sources */,
 				C0EE175429B91EB30032F165 /* UIView.swift in Sources */,
+				C6D2C2412A9784570083D06C /* LocalVideoView.swift in Sources */,
 				C0EE176529B9C33E0032F165 /* UITableView.swift in Sources */,
+				C6D2C23F2A976A880083D06C /* SoundPlayer.swift in Sources */,
 				C0B5160F29C05FDC00568465 /* ChatProfilePageVC.swift in Sources */,
 				C009BF4E29C9D82B0065B807 /* FileMsgContentView.swift in Sources */,
 				C0B515E429BDC32000568465 /* ImgCell.swift in Sources */,
@@ -1561,6 +1564,7 @@
 				C0EE174129B9188B0032F165 /* FeedVC.swift in Sources */,
 				C0EE175A29B9AD390032F165 /* UIFont.swift in Sources */,
 				C0EE170C29B8EC7C0032F165 /* UserDefaults.swift in Sources */,
+				C6D2C2432A9785440083D06C /* VideoView.swift in Sources */,
 				C009BF6B29CAF2900065B807 /* CheckOtpResponse.swift in Sources */,
 				C0B46AAC29FC560700D2A9B1 /* PopUpLauncher.swift in Sources */,
 				C0B5161F29C1AB0900568465 /* NotificationsVM.swift in Sources */,
