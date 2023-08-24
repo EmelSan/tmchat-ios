@@ -107,7 +107,7 @@ class AddPostView: BaseView {
                                                      UIView(),
                                                      imageList])
         
-        btnStack.addArrangedSubviews([//comments,
+        btnStack.addArrangedSubviews([comments,
                                       reactions,
                                       UIView(),
                                       incognito])

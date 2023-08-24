@@ -74,7 +74,7 @@ class TabbarController: BubbleTabBarController {
             guard let self else { return }
 
             switch action {
-            case var .didRequestLocalSDP(data):
+            case let .didRequestLocalSDP(data):
                 guard
                     let window = UIWindow.currentVisibleWindow,
                     let friend = data.friendModel,
@@ -84,7 +84,9 @@ class TabbarController: BubbleTabBarController {
                 }
                 let avatarURL = ApiPath.url(friend.avatar ?? "")
                 let colorCode = friend.colorCode
-                self.callSnackbar.model = .init(userName: friend.fullName, avatarURL: avatarURL, colorCode: colorCode)
+                self.callSnackbar.model = .init(userName: friend.fullName ?? friend.username ?? "unknown",
+                                                avatarURL: avatarURL,
+                                                colorCode: colorCode)
 
                 self.callSnackbar.show(on: window, onAnswer: { [weak self] in
                     PermissionManager.requestPermission(for: .camera) { [weak self] granted in
@@ -123,9 +125,6 @@ class TabbarController: BubbleTabBarController {
 
                 UIWindow.topVisibleViewController?.dismiss(animated: true)
             }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            SoundPlayer.shared.startRingtone()
         }
     }
 

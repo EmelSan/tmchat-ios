@@ -21,8 +21,13 @@ struct User: Codable {
     var roomUUID: String?
     var postCount: String?
 
-    var fullName: String {
-        [firstName ?? "", lastName ?? ""].joined(separator: " ").trimmingCharacters(in: .whitespaces)
+    var fullName: String? {
+        let value = [firstName ?? "", lastName ?? ""].joined(separator: " ").trimmingCharacters(in: .whitespaces)
+
+        if value.isEmpty {
+            return nil
+        }
+        return value
     }
 
     var formattedUsername: String {

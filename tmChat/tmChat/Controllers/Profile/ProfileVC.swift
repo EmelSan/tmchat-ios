@@ -266,9 +266,9 @@ extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTbCell.id, for: indexPath) as! FeedTbCell
-        cell.data = viewModel.data.value[indexPath.row]
+        let post = viewModel.data.value[indexPath.row]
         
-        cell.data = viewModel.data.value[indexPath.row]
+        cell.data = post
         cell.likeCallback = { [weak self] in
             self?.viewModel.toggleLike(uuid: cell.data?.uuid ?? "")
         }
@@ -278,7 +278,10 @@ extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.commentView.clickCallback = { [weak self] in
-            #warning("handle")
+            guard let comments = post.comments else { return }
+
+            let vc = CommentsVC(postUUID: post.uuid, comments: comments)
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.userDataStack.trailingBtn.clickCallback = { [weak self] in
             self?.openFeedBottomSheet(id: cell.data?.uuid ?? "", ownerId: cell.data?.owner.id ?? "", files: cell.data?.files ?? [])

@@ -171,7 +171,9 @@ extension FeedVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTbCell.id, for: indexPath) as! FeedTbCell
-        cell.data = viewModel.data[indexPath.row]
+        let post = viewModel.data[indexPath.row]
+        cell.data = post
+
         cell.likeCallback = { [weak self] in
             self?.viewModel.toggleLike(uuid: cell.data?.uuid ?? "")
         }
@@ -185,7 +187,10 @@ extension FeedVC: UITableViewDataSource, UITableViewDelegate {
             self?.openBottomSheet(id: cell.data?.uuid ?? "", ownerId: cell.data?.owner.id ?? "", files: cell.data?.files ?? [])
         }
         cell.commentView.clickCallback = { [weak self] in
-            #warning("handle")
+            guard let comments = post.comments else { return }
+
+            let vc = CommentsVC(postUUID: post.uuid, comments: comments)
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
         return cell
     }

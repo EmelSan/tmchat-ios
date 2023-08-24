@@ -35,6 +35,8 @@
 "language_description" = "Язык приложения";
 "incoming_call" = "Входящий звонок";
 "outgoing_call" = "Исходящий звонок";
+"empty_comments" = "Teswirler ýok. Birinji bol.";
+"comment_placeholder" = "введите ваш текст|";
 
 "about_yourself" = "Men barada";
 "yesterday" = "Düýn";

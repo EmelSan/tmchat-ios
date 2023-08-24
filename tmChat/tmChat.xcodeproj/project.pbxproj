@@ -224,6 +224,9 @@
 		C67A7F4D2A93FF38002DDDF4 /* ProfileTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A7F4C2A93FF38002DDDF4 /* ProfileTabVC.swift */; };
 		C67A7F512A940089002DDDF4 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A7F502A940089002DDDF4 /* SettingsCell.swift */; };
 		C67A7F542A9420ED002DDDF4 /* AppSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A7F532A9420ED002DDDF4 /* AppSettingsVC.swift */; };
+		C6D2C2342A9672970083D06C /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C6D2C2362A9672970083D06C /* Localizable.stringsdict */; };
+		C6D2C23B2A9675C10083D06C /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C23A2A9675C10083D06C /* CommentsVC.swift */; };
+		C6D2C23D2A9676050083D06C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C23C2A9676050083D06C /* CommentCell.swift */; };
 		C6D2C23F2A976A880083D06C /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C23E2A976A880083D06C /* SoundPlayer.swift */; };
 		C6D2C2412A9784570083D06C /* LocalVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C2402A9784570083D06C /* LocalVideoView.swift */; };
 		C6D2C2432A9785440083D06C /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C2422A9785440083D06C /* VideoView.swift */; };
@@ -460,6 +463,11 @@
 		C67A7F4C2A93FF38002DDDF4 /* ProfileTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileTabVC.swift; path = tmChat/Controllers/ProfileTab/ProfileTabVC.swift; sourceTree = SOURCE_ROOT; };
 		C67A7F502A940089002DDDF4 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsCell.swift; path = tmChat/Controllers/ProfileTab/SettingsCell.swift; sourceTree = SOURCE_ROOT; };
 		C67A7F532A9420ED002DDDF4 /* AppSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettingsVC.swift; path = tmChat/Controllers/ProfileTab/AppSettings/AppSettingsVC.swift; sourceTree = SOURCE_ROOT; };
+		C6D2C2352A9672970083D06C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		C6D2C2372A96729B0083D06C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		C6D2C2382A96729C0083D06C /* tk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = tk; path = tk.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		C6D2C23A2A9675C10083D06C /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentsVC.swift; path = tmChat/Controllers/Comments/CommentsVC.swift; sourceTree = SOURCE_ROOT; };
+		C6D2C23C2A9676050083D06C /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentCell.swift; path = tmChat/Controllers/Comments/CommentCell.swift; sourceTree = SOURCE_ROOT; };
 		C6D2C23E2A976A880083D06C /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SoundPlayer.swift; path = tmChat/Services/SoundPlayer.swift; sourceTree = SOURCE_ROOT; };
 		C6D2C2402A9784570083D06C /* LocalVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalVideoView.swift; path = tmChat/Controllers/Call/LocalVideoView.swift; sourceTree = SOURCE_ROOT; };
 		C6D2C2422A9785440083D06C /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoView.swift; path = tmChat/Controllers/Call/VideoView.swift; sourceTree = SOURCE_ROOT; };
@@ -896,6 +904,7 @@
 				C0EE16D429B68B8F0032F165 /* Assets.xcassets */,
 				C0EE170329B8EB550032F165 /* roboto-flex.ttf */,
 				C0EE16D929B68B8F0032F165 /* Info.plist */,
+				C6D2C2362A9672970083D06C /* Localizable.stringsdict */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -935,6 +944,7 @@
 		C0EE171329B916A40032F165 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C6D2C2392A9675AC0083D06C /* Comments */,
 				C627D0CB2A94E5920010E585 /* Call */,
 				C67A7F4B2A93FF10002DDDF4 /* ProfileTab */,
 				C03948EC29EE8AC2006B7582 /* Complain */,
@@ -1237,6 +1247,15 @@
 			path = AppSettings;
 			sourceTree = "<group>";
 		};
+		C6D2C2392A9675AC0083D06C /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				C6D2C23A2A9675C10083D06C /* CommentsVC.swift */,
+				C6D2C23C2A9676050083D06C /* CommentCell.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
 		C6E96EAF2A90EDE60056F4CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1323,6 +1342,7 @@
 				8B4123812A1FD58F0058A4B6 /* GoogleService-Info.plist in Resources */,
 				C0FD76EB29F9244400F47FD6 /* Launch Screen.storyboard in Resources */,
 				C0EE16D529B68B8F0032F165 /* Assets.xcassets in Resources */,
+				C6D2C2342A9672970083D06C /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1432,6 +1452,7 @@
 				C0B5162E29C2FBBA00568465 /* AttachmentOptionsBS.swift in Sources */,
 				C0B515F729BF3B7F00568465 /* ProfileIconTextBtn.swift in Sources */,
 				C6D5B5B72A91724600D50A57 /* ProfileInfoView.swift in Sources */,
+				C6D2C23D2A9676050083D06C /* CommentCell.swift in Sources */,
 				C0B515E029BDBE2300568465 /* CheckBtn.swift in Sources */,
 				C0EE17DA29BBEF010032F165 /* TextField.swift in Sources */,
 				C0EE17D429BBEB730032F165 /* EnterPhoneVM.swift in Sources */,
@@ -1443,6 +1464,7 @@
 				C0EE17DE29BBF2EC0032F165 /* TextBtn.swift in Sources */,
 				C627D0C72A94D2500010E585 /* WebRTCClient.swift in Sources */,
 				C06A567029DA8042008B14DF /* UIBezierPath.swift in Sources */,
+				C6D2C23B2A9675C10083D06C /* CommentsVC.swift in Sources */,
 				C0EE17D229BBEB690032F165 /* EnterPhoneView.swift in Sources */,
 				C0EE176929B9C3530032F165 /* UIImageView.swift in Sources */,
 				C0EE16F929B8E2800032F165 /* CBTabBarButton.swift in Sources */,
@@ -1610,6 +1632,17 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		C6D2C2362A9672970083D06C /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C6D2C2352A9672970083D06C /* en */,
+				C6D2C2372A96729B0083D06C /* ru */,
+				C6D2C2382A96729C0083D06C /* tk */,
+			);
+			name = Localizable.stringsdict;
+			path = tmChat/Resources;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1740,7 +1773,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HJ6D92SUWP;
+				DEVELOPMENT_TEAM = LH9V93BQ9M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tmchat/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need access to camera to take picture";
@@ -1760,7 +1793,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "tmchat-1234";
+				PRODUCT_BUNDLE_IDENTIFIER = "tmchat-123";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -65,7 +65,7 @@ final class SettingsCell: UITableViewCell {
 
     // MARK: - Public Properties
 
-    static let id = "ProfileTabCell"
+    static let id = "SettingsCell"
 
     var model: Model? {
         didSet {

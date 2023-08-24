@@ -222,11 +222,7 @@ final class CallVC: UIViewController {
         case .outgoing:
             subtitleLabel.text = "outgoing_call".localized()
         }
-        if !friend.fullName.isEmpty {
-            titleLabel.text = friend.fullName
-        } else {
-            titleLabel.text = friend.username
-        }
+        titleLabel.text = friend.fullName ?? friend.username
     }
 
     @objc

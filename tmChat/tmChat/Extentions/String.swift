@@ -9,6 +9,14 @@ import Foundation
 import UIKit
 
 extension String {
+
+    private static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSZ"
+        dateFormatter.locale = Locale(identifier: "en_us_posix")
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT") as TimeZone?
+        return dateFormatter
+    }()
     
     func isValidNumber() -> Bool {
         do {
@@ -41,12 +49,7 @@ extension String {
     }
     
     func getDate() -> Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSZ"
-        dateFormatter.timeZone = NSTimeZone(abbreviation: "GMT") as TimeZone?
-        dateFormatter.locale = Locale(identifier: "en_us_posix")
-        let date = dateFormatter.date(from: self)
-        return date
+        Self.dateFormatter.date(from: self)
     }
 
     func convertToDictionary() -> [String: Any]? {

@@ -35,6 +35,8 @@
 "language_description" = "Язык приложения";
 "incoming_call" = "Входящий звонок";
 "outgoing_call" = "Исходящий звонок";
+"empty_comments" = "Здесь пока нет комментариев.";
+"comment_placeholder" = "введите ваш текст|";
 
 "about_yourself" = "О себе";
 "yesterday" = "Вчера";

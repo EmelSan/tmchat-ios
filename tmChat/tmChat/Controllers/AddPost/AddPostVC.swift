@@ -107,6 +107,7 @@ class AddPostVC: UIViewController {
         params["description"] = mainView.postDescription()
         params["publishAt"] = Date().getTimeStamp()
         params["isLikeable"] = "\(mainView.reactions.isChecked)"
+        params["isCommentable"] = "\(mainView.comments.isChecked)"
         return params
     }
     

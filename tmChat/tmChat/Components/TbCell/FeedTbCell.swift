@@ -130,7 +130,7 @@ class FeedTbCell: UITableViewCell {
         ])
     }
     
-    func setupContentStack(){
+    func setupContentStack() {
         contentStack.removeSubviews()
         let _ = contentStack.addBackground(color: .white, cornerRadius: 0)
         contentStack.addArrangedSubview(userDataStack)
@@ -142,15 +142,22 @@ class FeedTbCell: UITableViewCell {
             mediaCollectionView.removeFromSuperview()
         }
         
-        contentStack.addArrangedSubviews([textWrapper, btnStack, separator, commentView])
+        contentStack.isLayoutMarginsRelativeArrangement = true
+        contentStack.addArrangedSubviews([textWrapper, btnStack, separator])
         contentStack.setCustomSpacing(10, after: btnStack)
-        contentStack.setCustomSpacing(0, after: separator)
 
-        #warning("Добавить снизу спейсинг 10, если нельзя оставлять комментарии")
+        if data?.isCommentable == true {
+            contentStack.addArrangedSubview(commentView)
+            contentStack.setCustomSpacing(0, after: separator)
+            contentStack.layoutMargins.bottom = 0
+        } else {
+            contentStack.layoutMargins.bottom = 10
+        }
     }
     
     func setupData(){
         guard let data = data else { return }
+
         setupContentStack()
         userDataStack.setupData(data.owner)
         userDataStack.desc.text = TimeAgo.shared.getAgo(data.createdAt?.getDate())
@@ -159,8 +166,13 @@ class FeedTbCell: UITableViewCell {
         seenCount.title.text = data.viewCount
         likeBtn.isHidden = !data.isLikeable
         likeBtn.data = LikeData(isLiked: data.isLiked, count: data.likeCount)
-        #warning("сделать локализацию")
-        commentView.title = "send_comment".localized()
+        let commentsCount = data.comments?.count ?? 0
+
+        if data.isCommentable == true && commentsCount != 0 {
+            commentView.title = String(format: "comments".localized(), commentsCount)
+        } else {
+            commentView.title = "send_comment".localized()
+        }
     }
 }
 

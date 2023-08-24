@@ -29,4 +29,12 @@ extension Date {
         let stringDate = df.string(from: self)
         return stringDate
     }
+
+    func getTime() -> String {
+        let df = DateFormatter()
+        df.dateFormat = "HH:mm"
+        df.timeZone = TimeZone.current
+
+        return df.string(from: self)
+    }
 }
