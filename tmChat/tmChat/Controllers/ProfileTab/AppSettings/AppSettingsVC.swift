@@ -27,6 +27,13 @@ final class AppSettingsVC: UIViewController {
     private var sheetTransitioningDelegate = SheetTransitioningDelegate()
 
     private lazy var rows: [Row.Model] = [
+        .init(icon: .image(UIImage(named: "person")),
+              size: .medium,
+              title: "profile_settings".localized(),
+              subtitle: "profile_settings_description".localized(),
+              padding: .init(top: 0, left: 14, bottom: 4, right: 14),
+              contentInsets: .init(horizontalEdges: 6, verticalEdges: 8),
+              tapCallback: openProfileSettings),
 //        .init(icon: .image(UIImage(named: "alert")),
 //              size: .medium,
 //              title: "notifications".localized(),
@@ -110,17 +117,9 @@ final class AppSettingsVC: UIViewController {
         }
     }
 
-    private func openNotifications() {
-        let vc = NotificationsVC()
+    private func openProfileSettings() {
+        let vc = SettingsVC()
         navigationController?.pushViewController(vc, animated: true)
-    }
-
-    private func openPrivacy() {
-        
-    }
-
-    private func openDevices() {
-
     }
 
     private func openLanguage() {

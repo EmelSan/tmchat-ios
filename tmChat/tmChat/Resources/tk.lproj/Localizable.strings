@@ -33,9 +33,12 @@
 "devices_description" = "Активные сессии";
 "language" = "Dil";
 "language_description" = "Язык приложения";
+"profile_settings" = "Настройки профиля";
+"profile_settings_description" = "Имя пользователя, выход";
 "incoming_call" = "Входящий звонок";
 "outgoing_call" = "Исходящий звонок";
 "empty_comments" = "Teswirler ýok. Birinji bol.";
+"comments_title" = "Teswirler";
 "comment_placeholder" = "введите ваш текст|";
 
 "about_yourself" = "Men barada";

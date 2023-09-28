@@ -75,7 +75,7 @@ final class ProfileHeaderView: UIStackView {
     }
 
     private func setupRightButton() {
-        searchBtn.isHidden = isScrolled
+        searchBtn.isHidden = true
         moreBtn.isHidden = !isScrolled
     }
 

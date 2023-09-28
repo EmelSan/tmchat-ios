@@ -33,9 +33,12 @@
 "devices_description" = "Активные сессии";
 "language" = "Язык";
 "language_description" = "Язык приложения";
+"profile_settings" = "Настройки профиля";
+"profile_settings_description" = "Имя пользователя, выход";
 "incoming_call" = "Входящий звонок";
 "outgoing_call" = "Исходящий звонок";
 "empty_comments" = "Здесь пока нет комментариев.";
+"comments_title" = "Комментарии";
 "comment_placeholder" = "введите ваш текст|";
 
 "about_yourself" = "О себе";

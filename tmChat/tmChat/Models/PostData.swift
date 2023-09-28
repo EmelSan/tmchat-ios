@@ -30,7 +30,7 @@ struct PostData: Codable {
 
 struct PostComment: Codable {
 
-    var id: String
+    var id: Int
     var postId: String
     var commenterId: String?
     var comment: String?

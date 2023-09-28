@@ -75,6 +75,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
 
     }
+
+    func logout() {
+        guard let navigation = window?.rootViewController as? UINavigationController else { return }
+
+        DatabaseManager.drop()
+        AccUserDefaults.clear()
+        SocketClient.shared.clear()
+        navigation.setViewControllers([getStartVC()], animated: true)
+    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {

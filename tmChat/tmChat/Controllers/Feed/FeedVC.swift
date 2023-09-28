@@ -187,9 +187,7 @@ extension FeedVC: UITableViewDataSource, UITableViewDelegate {
             self?.openBottomSheet(id: cell.data?.uuid ?? "", ownerId: cell.data?.owner.id ?? "", files: cell.data?.files ?? [])
         }
         cell.commentView.clickCallback = { [weak self] in
-            guard let comments = post.comments else { return }
-
-            let vc = CommentsVC(postUUID: post.uuid, comments: comments)
+            let vc = CommentsVC(postUUID: post.uuid, comments: post.comments ?? [])
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         return cell

@@ -107,7 +107,8 @@ final class CommentCell: UITableViewCell {
         titleLabel.text = model.commenterName
         subtitleLabel.text = model.commentDate?.getTime()
 
-        complainButton.isHidden = model.isMyComment
+//        complainButton.isHidden = model.isMyComment
+        complainButton.isHidden = true
 
         avatarImageView.kf.setImage(with: model.commenterAvatarURL)
         avatarImageView.backgroundColor = UIColor(hexString: model.colorCode)

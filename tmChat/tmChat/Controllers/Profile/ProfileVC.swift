@@ -278,9 +278,7 @@ extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.commentView.clickCallback = { [weak self] in
-            guard let comments = post.comments else { return }
-
-            let vc = CommentsVC(postUUID: post.uuid, comments: comments)
+            let vc = CommentsVC(postUUID: post.uuid, comments: post.comments ?? [])
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         cell.userDataStack.trailingBtn.clickCallback = { [weak self] in

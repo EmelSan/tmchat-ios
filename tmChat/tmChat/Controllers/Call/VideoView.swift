@@ -11,18 +11,23 @@ import EasyPeasy
 
 final class VideoView: UIView {
 
-    private lazy var rtcMetalView = RTCMTLVideoView(frame: bounds)
+    #if arch(arm64)
+    private lazy var rtcVideoView = RTCMTLVideoView(frame: bounds)
+    #else
+    private lazy var rtcVideoView = RTCEAGLVideoView(frame: .zero)
+    #endif
+
     private var applyDefaultRendererConfigurationOnNextFrame = false
 
     init() {
         super.init(frame: .zero)
 
-        addSubview(rtcMetalView)
+        addSubview(rtcVideoView)
 
-        rtcMetalView.easy.layout(Edges())
-        rtcMetalView.layoutMargins = .zero
+        rtcVideoView.easy.layout(Edges())
+        rtcVideoView.layoutMargins = .zero
 
-        for subview in rtcMetalView.subviews {
+        for subview in rtcVideoView.subviews {
             if subview is MTKView, subview.superview != nil {
                 subview.easy.layout(Edges())
             }
@@ -40,19 +45,21 @@ final class VideoView: UIView {
     }
 
     private func applyDefaultRendererConfiguration() {
-        rtcMetalView.videoContentMode = .scaleAspectFill
-        rtcMetalView.rotationOverride = nil
+        #if arch(arm64)
+        rtcVideoView.videoContentMode = .scaleAspectFill
+        #endif
+        rtcVideoView.rotationOverride = nil
     }
 }
 
 extension VideoView: RTCVideoRenderer {
 
     func setSize(_ size: CGSize) {
-        rtcMetalView.setSize(size)
+        rtcVideoView.setSize(size)
     }
 
     func renderFrame(_ frame: RTCVideoFrame?) {
-        rtcMetalView.renderFrame(frame)
+        rtcVideoView.renderFrame(frame)
 
         DispatchQueue.main.async { [self] in
             if applyDefaultRendererConfigurationOnNextFrame {
@@ -67,26 +74,26 @@ extension VideoView: RTCVideoRenderer {
             switch UIDevice.current.orientation {
             case .portrait, .portraitUpsideDown:
                 isLandscape = false
-                rtcMetalView.rotationOverride = nil
+                rtcVideoView.rotationOverride = nil
 
             case .landscapeLeft:
                 isLandscape = true
                 switch frame.rotation {
                     // Portrait upside-down
                 case ._270:
-                    rtcMetalView.rotationOverride = NSNumber(value: RTCVideoRotation._0.rawValue)
+                    rtcVideoView.rotationOverride = NSNumber(value: RTCVideoRotation._0.rawValue)
 
                     // Portrait
                 case ._90:
-                    rtcMetalView.rotationOverride = NSNumber(value: RTCVideoRotation._180.rawValue)
+                    rtcVideoView.rotationOverride = NSNumber(value: RTCVideoRotation._180.rawValue)
 
                     // Landscape right
                 case ._180:
-                    rtcMetalView.rotationOverride = NSNumber(value: RTCVideoRotation._270.rawValue)
+                    rtcVideoView.rotationOverride = NSNumber(value: RTCVideoRotation._270.rawValue)
 
                     // Landscape left
                 case ._0:
-                    rtcMetalView.rotationOverride = NSNumber(value: RTCVideoRotation._90.rawValue)
+                    rtcVideoView.rotationOverride = NSNumber(value: RTCVideoRotation._90.rawValue)
                 @unknown default:
                     return
                 }
@@ -96,19 +103,19 @@ extension VideoView: RTCVideoRenderer {
                 switch frame.rotation {
                     // Portrait upside-down
                 case ._270:
-                    rtcMetalView.rotationOverride = NSNumber(value: RTCVideoRotation._180.rawValue)
+                    rtcVideoView.rotationOverride = NSNumber(value: RTCVideoRotation._180.rawValue)
 
                     // Portrait
                 case ._90:
-                    rtcMetalView.rotationOverride = NSNumber(value: RTCVideoRotation._0.rawValue)
+                    rtcVideoView.rotationOverride = NSNumber(value: RTCVideoRotation._0.rawValue)
 
                     // Landscape right
                 case ._180:
-                    rtcMetalView.rotationOverride = NSNumber(value: RTCVideoRotation._90.rawValue)
+                    rtcVideoView.rotationOverride = NSNumber(value: RTCVideoRotation._90.rawValue)
 
                     // Landscape left
                 case ._0:
-                    rtcMetalView.rotationOverride = NSNumber(value: RTCVideoRotation._270.rawValue)
+                    rtcVideoView.rotationOverride = NSNumber(value: RTCVideoRotation._270.rawValue)
                 @unknown default:
                     return
                 }
@@ -119,9 +126,13 @@ extension VideoView: RTCVideoRenderer {
             let isSquarish = max(bounds.width, bounds.height) / min(bounds.width, bounds.height) <= 1.2
 
             if (isLandscape == remoteIsLandscape || isSquarish) {
-                rtcMetalView.videoContentMode = .scaleAspectFill
+                #if arch(arm64)
+                rtcVideoView.videoContentMode = .scaleAspectFill
+                #endif
             } else {
-                rtcMetalView.videoContentMode = .scaleAspectFit
+                #if arch(arm64)
+                rtcVideoView.videoContentMode = .scaleAspectFit
+                #endif
             }
         }
     }

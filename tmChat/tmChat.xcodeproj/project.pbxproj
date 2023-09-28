@@ -213,7 +213,6 @@
 		C0EE17FE29BC43430032F165 /* UsernameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE17FD29BC43430032F165 /* UsernameVC.swift */; };
 		C0FD76EB29F9244400F47FD6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FD76EA29F9244400F47FD6 /* Launch Screen.storyboard */; };
 		C627D0C72A94D2500010E585 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0C62A94D2500010E585 /* WebRTCClient.swift */; };
-		C627D0CA2A94E1020010E585 /* VideoCallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0C92A94E1020010E585 /* VideoCallVC.swift */; };
 		C627D0CF2A94E6580010E585 /* CallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0CE2A94E6580010E585 /* CallVC.swift */; };
 		C627D0D12A94E8A40010E585 /* BluredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0D02A94E8A40010E585 /* BluredButton.swift */; };
 		C627D0D32A94F1B70010E585 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0D22A94F1B70010E585 /* SignalingClient.swift */; };
@@ -452,7 +451,6 @@
 		C0FD76EF29F968AA00F47FD6 /* tmchat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tmchat.entitlements; sourceTree = "<group>"; };
 		C3DD52E38434C45BC794EC4A /* Pods_tmchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tmchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C627D0C62A94D2500010E585 /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebRTCClient.swift; path = tmchat/Services/WebRTC/WebRTCClient.swift; sourceTree = SOURCE_ROOT; };
-		C627D0C92A94E1020010E585 /* VideoCallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoCallVC.swift; path = tmchat/Controllers/Call/VideoCallVC.swift; sourceTree = SOURCE_ROOT; };
 		C627D0CE2A94E6580010E585 /* CallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CallVC.swift; path = tmChat/Controllers/Call/CallVC.swift; sourceTree = SOURCE_ROOT; };
 		C627D0D02A94E8A40010E585 /* BluredButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BluredButton.swift; path = tmChat/Components/Button/BluredButton.swift; sourceTree = SOURCE_ROOT; };
 		C627D0D22A94F1B70010E585 /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignalingClient.swift; path = tmchat/Services/WebRTC/SignalingClient.swift; sourceTree = SOURCE_ROOT; };
@@ -1211,7 +1209,6 @@
 		C627D0CB2A94E5920010E585 /* Call */ = {
 			isa = PBXGroup;
 			children = (
-				C627D0C92A94E1020010E585 /* VideoCallVC.swift */,
 				C627D0CE2A94E6580010E585 /* CallVC.swift */,
 				C6D2C2402A9784570083D06C /* LocalVideoView.swift */,
 				C6D2C2422A9785440083D06C /* VideoView.swift */,
@@ -1520,7 +1517,6 @@
 				C059C9ED29E2806F0049D93D /* ContactTbCell.swift in Sources */,
 				C0B5161129C0991200568465 /* MessagingTextField.swift in Sources */,
 				C0EE177729B9CC160032F165 /* UnreadCount.swift in Sources */,
-				C627D0CA2A94E1020010E585 /* VideoCallVC.swift in Sources */,
 				C018472A29E2DDE20071CFEF /* RoomInfo.swift in Sources */,
 				C0B5165929C566B200568465 /* EditProfileView.swift in Sources */,
 				C0B515E629BDD2BD00568465 /* Protocols.swift in Sources */,
@@ -1772,7 +1768,7 @@
 				CODE_SIGN_ENTITLEMENTS = tmchat/tmchat.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LH9V93BQ9M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tmchat/Resources/Info.plist;
@@ -1792,7 +1788,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "tmchat-123";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1811,7 +1807,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = tmchat/tmchat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LH9V93BQ9M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tmchat/Resources/Info.plist;
@@ -1831,7 +1827,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "tmchat-123";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

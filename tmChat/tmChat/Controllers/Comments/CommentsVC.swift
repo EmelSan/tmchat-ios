@@ -16,9 +16,12 @@ final class CommentsVC: UIViewController {
 
     // MARK: - Private Methods
 
+    private let header = Header(title: "comments_title".localized())
+
     private let tableView: UITableView = {
         let table = UITableView(rowHeight: UITableView.automaticDimension, estimatedRowHeight: 100, backgroundColor: .clear)
         table.register(Row.self, forCellReuseIdentifier: Row.id)
+        table.keyboardDismissMode = .onDrag
         return table
     }()
 
@@ -68,28 +71,48 @@ final class CommentsVC: UIViewController {
         bind()
         reloadData()
         observeKeyboard()
+
+        if comments.isEmpty {
+            loadData()
+        }
     }
 
     // MARK: - Private Methods
 
     private func setupViews() {
         view.backgroundColor = .bg
+        view.addSubview(header)
         view.addSubview(tableView)
         view.addSubview(emptyLabel)
         view.addSubview(textField)
 
+        header.easy.layout(Leading(), Top(), Trailing())
         tableView.easy.layout([
-            Top(),
+            Top().to(header, .bottom),
             Bottom().to(textField, .top),
             Leading(), Trailing()
         ])
-        textField.easy.layout(Leading(), Trailing(), Bottom().to(view.safeAreaLayoutGuide, .bottom))
+        textField.easy.layout(Leading(), Trailing(), Bottom())
         emptyLabel.easy.layout(Leading(), Trailing(), CenterY())
+
+        header.backgroundColor = .lightClear
     }
 
     private func bind() {
         textField.sendBtn.clickCallback = { [weak self] in
             self?.sendComment()
+        }
+        header.backBtn.clickCallback = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+    }
+
+    private func loadData() {
+        FeedRequests.shared.getComments(uuid: postUUID) { [weak self] response in
+            guard let comments = response?.data else { return }
+
+            self?.comments = comments
+            self?.reloadData()
         }
     }
 
@@ -110,10 +133,9 @@ final class CommentsVC: UIViewController {
         textField.setText(nil)
 
         FeedRequests.shared.addComment(uuid: postUUID, comment: comment) { [weak self] response in
-            guard let comment = response?.data?.last else { return }
+            guard let comments = response?.data else { return }
 
-            let commentsCount = self?.comments.count ?? 0
-            self?.comments.append(comment)
+            self?.comments = comments
             self?.reloadData()
         }
     }
