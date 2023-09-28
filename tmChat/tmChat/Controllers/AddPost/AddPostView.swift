@@ -24,7 +24,7 @@ class AddPostView: BaseView {
                                                         verticalEdges: 10),
                                backgroundColor: .onBg)
     
-    var comments = CheckBtn(title: "comments".localized(), isChecked: true)
+    var comments = CheckBtn(title: "comments_title".localized(), isChecked: true)
     var reactions = CheckBtn(title: "reactions".localized(), isChecked: true)
     var incognito = IconBtn(image: UIImage(named: "incognito"), color: .bapAccent)
     
@@ -107,7 +107,7 @@ class AddPostView: BaseView {
                                                      UIView(),
                                                      imageList])
         
-        btnStack.addArrangedSubviews([//comments,
+        btnStack.addArrangedSubviews([comments,
                                       reactions,
                                       UIView(),
                                       incognito])

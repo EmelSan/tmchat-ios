@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		846EEB792D8A8AAB33C71BDA /* Pods_tmchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2ADF585AEDE0F8EC91D10D1 /* Pods_tmchat.framework */; };
 		8B4123812A1FD58F0058A4B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B4123802A1FD58F0058A4B6 /* GoogleService-Info.plist */; };
 		8B4123842A2002E80058A4B6 /* OnePostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4123832A2002E80058A4B6 /* OnePostVC.swift */; };
 		8BFE77DC2A290E4700932BFE /* ComplainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE77DB2A290E4700932BFE /* ComplainVM.swift */; };
+		A5684305EC54C9CC375EBCA0 /* Pods_tmchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3DD52E38434C45BC794EC4A /* Pods_tmchat.framework */; };
 		C009BF3329C8553A0065B807 /* TextMsgTbCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009BF3229C8553A0065B807 /* TextMsgTbCell.swift */; };
 		C009BF3529C8561B0065B807 /* MsgSelectionBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009BF3429C8561B0065B807 /* MsgSelectionBtn.swift */; };
 		C009BF3729C85F170065B807 /* PanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C009BF3629C85F170065B807 /* PanGestureRecognizer.swift */; };
@@ -212,10 +212,34 @@
 		C0EE17FC29BC43100032F165 /* UsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE17FB29BC43100032F165 /* UsernameView.swift */; };
 		C0EE17FE29BC43430032F165 /* UsernameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EE17FD29BC43430032F165 /* UsernameVC.swift */; };
 		C0FD76EB29F9244400F47FD6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FD76EA29F9244400F47FD6 /* Launch Screen.storyboard */; };
+		C627D0C72A94D2500010E585 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0C62A94D2500010E585 /* WebRTCClient.swift */; };
+		C627D0CF2A94E6580010E585 /* CallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0CE2A94E6580010E585 /* CallVC.swift */; };
+		C627D0D12A94E8A40010E585 /* BluredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0D02A94E8A40010E585 /* BluredButton.swift */; };
+		C627D0D32A94F1B70010E585 /* SignalingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0D22A94F1B70010E585 /* SignalingClient.swift */; };
+		C627D0D52A95003A0010E585 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0D42A95003A0010E585 /* UIWindow.swift */; };
+		C627D0D72A951A800010E585 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0D62A951A800010E585 /* Dictionary.swift */; };
+		C627D0DC2A95464C0010E585 /* SDP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0DB2A95464C0010E585 /* SDP.swift */; };
+		C627D0DE2A954A4E0010E585 /* CallSnackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C627D0DD2A954A4E0010E585 /* CallSnackbar.swift */; };
+		C67A7F4D2A93FF38002DDDF4 /* ProfileTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A7F4C2A93FF38002DDDF4 /* ProfileTabVC.swift */; };
+		C67A7F512A940089002DDDF4 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A7F502A940089002DDDF4 /* SettingsCell.swift */; };
+		C67A7F542A9420ED002DDDF4 /* AppSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67A7F532A9420ED002DDDF4 /* AppSettingsVC.swift */; };
+		C6D2C2342A9672970083D06C /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C6D2C2362A9672970083D06C /* Localizable.stringsdict */; };
+		C6D2C23B2A9675C10083D06C /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C23A2A9675C10083D06C /* CommentsVC.swift */; };
+		C6D2C23D2A9676050083D06C /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C23C2A9676050083D06C /* CommentCell.swift */; };
+		C6D2C23F2A976A880083D06C /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C23E2A976A880083D06C /* SoundPlayer.swift */; };
+		C6D2C2412A9784570083D06C /* LocalVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C2402A9784570083D06C /* LocalVideoView.swift */; };
+		C6D2C2432A9785440083D06C /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D2C2422A9785440083D06C /* VideoView.swift */; };
+		C6D5B5B32A91644900D50A57 /* like_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = C6D5B5B22A91644900D50A57 /* like_animation.json */; };
+		C6D5B5B52A91661F00D50A57 /* TitleChevronView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5B5B42A91661F00D50A57 /* TitleChevronView.swift */; };
+		C6D5B5B72A91724600D50A57 /* ProfileInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D5B5B62A91724600D50A57 /* ProfileInfoView.swift */; };
+		C6E96EB12A90EDF20056F4CC /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E96EB02A90EDF20056F4CC /* ProfileHeaderView.swift */; };
+		C6F767B32A955B4F00535EE7 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F767B22A955B4F00535EE7 /* Typealiases.swift */; };
+		C6F767B52A9632DD00535EE7 /* PermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F767B42A9632DD00535EE7 /* PermissionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		295E16FFC2BC765D024C0B32 /* Pods-tmchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tmchat.debug.xcconfig"; path = "Target Support Files/Pods-tmchat/Pods-tmchat.debug.xcconfig"; sourceTree = "<group>"; };
+		1858992E3A4731D7FEF4DB25 /* Pods-tmchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tmchat.debug.xcconfig"; path = "Target Support Files/Pods-tmchat/Pods-tmchat.debug.xcconfig"; sourceTree = "<group>"; };
+		65805ED8D92B064ADA6463EA /* Pods-tmchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tmchat.release.xcconfig"; path = "Target Support Files/Pods-tmchat/Pods-tmchat.release.xcconfig"; sourceTree = "<group>"; };
 		8B4123802A1FD58F0058A4B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B4123832A2002E80058A4B6 /* OnePostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OnePostVC.swift; path = tmChat/Controllers/OnePost/OnePostVC.swift; sourceTree = SOURCE_ROOT; };
 		8BFE77DB2A290E4700932BFE /* ComplainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ComplainVM.swift; path = tmChat/Controllers/Complain/ComplainVM.swift; sourceTree = SOURCE_ROOT; };
@@ -350,7 +374,6 @@
 		C0B7FE1A29E7DA5300C91367 /* MediaViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewerVC.swift; sourceTree = "<group>"; };
 		C0B826B029D37E0B00332713 /* EmitMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitMsg.swift; sourceTree = "<group>"; };
 		C0B826B229D37E3100332713 /* ShortMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortMsg.swift; sourceTree = "<group>"; };
-		C0C65528F5A56D05D785443D /* Pods-tmchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tmchat.release.xcconfig"; path = "Target Support Files/Pods-tmchat/Pods-tmchat.release.xcconfig"; sourceTree = "<group>"; };
 		C0EE16C829B68B8E0032F165 /* tmchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tmchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EE16CB29B68B8E0032F165 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0EE16D429B68B8F0032F165 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -426,7 +449,32 @@
 		C0EE17FD29BC43430032F165 /* UsernameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameVC.swift; sourceTree = "<group>"; };
 		C0FD76EA29F9244400F47FD6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C0FD76EF29F968AA00F47FD6 /* tmchat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tmchat.entitlements; sourceTree = "<group>"; };
-		C2ADF585AEDE0F8EC91D10D1 /* Pods_tmchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tmchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3DD52E38434C45BC794EC4A /* Pods_tmchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tmchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C627D0C62A94D2500010E585 /* WebRTCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebRTCClient.swift; path = tmchat/Services/WebRTC/WebRTCClient.swift; sourceTree = SOURCE_ROOT; };
+		C627D0CE2A94E6580010E585 /* CallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CallVC.swift; path = tmChat/Controllers/Call/CallVC.swift; sourceTree = SOURCE_ROOT; };
+		C627D0D02A94E8A40010E585 /* BluredButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BluredButton.swift; path = tmChat/Components/Button/BluredButton.swift; sourceTree = SOURCE_ROOT; };
+		C627D0D22A94F1B70010E585 /* SignalingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignalingClient.swift; path = tmchat/Services/WebRTC/SignalingClient.swift; sourceTree = SOURCE_ROOT; };
+		C627D0D42A95003A0010E585 /* UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIWindow.swift; path = tmChat/Extentions/UIKit/UIWindow.swift; sourceTree = SOURCE_ROOT; };
+		C627D0D62A951A800010E585 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Dictionary.swift; path = tmChat/Extentions/Dictionary.swift; sourceTree = SOURCE_ROOT; };
+		C627D0DB2A95464C0010E585 /* SDP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SDP.swift; path = tmChat/Services/WebRTC/SDP.swift; sourceTree = SOURCE_ROOT; };
+		C627D0DD2A954A4E0010E585 /* CallSnackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CallSnackbar.swift; path = tmChat/Components/CallSnackbar.swift; sourceTree = SOURCE_ROOT; };
+		C67A7F4C2A93FF38002DDDF4 /* ProfileTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileTabVC.swift; path = tmChat/Controllers/ProfileTab/ProfileTabVC.swift; sourceTree = SOURCE_ROOT; };
+		C67A7F502A940089002DDDF4 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsCell.swift; path = tmChat/Controllers/ProfileTab/SettingsCell.swift; sourceTree = SOURCE_ROOT; };
+		C67A7F532A9420ED002DDDF4 /* AppSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppSettingsVC.swift; path = tmChat/Controllers/ProfileTab/AppSettings/AppSettingsVC.swift; sourceTree = SOURCE_ROOT; };
+		C6D2C2352A9672970083D06C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		C6D2C2372A96729B0083D06C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		C6D2C2382A96729C0083D06C /* tk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = tk; path = tk.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		C6D2C23A2A9675C10083D06C /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentsVC.swift; path = tmChat/Controllers/Comments/CommentsVC.swift; sourceTree = SOURCE_ROOT; };
+		C6D2C23C2A9676050083D06C /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommentCell.swift; path = tmChat/Controllers/Comments/CommentCell.swift; sourceTree = SOURCE_ROOT; };
+		C6D2C23E2A976A880083D06C /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SoundPlayer.swift; path = tmChat/Services/SoundPlayer.swift; sourceTree = SOURCE_ROOT; };
+		C6D2C2402A9784570083D06C /* LocalVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalVideoView.swift; path = tmChat/Controllers/Call/LocalVideoView.swift; sourceTree = SOURCE_ROOT; };
+		C6D2C2422A9785440083D06C /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VideoView.swift; path = tmChat/Controllers/Call/VideoView.swift; sourceTree = SOURCE_ROOT; };
+		C6D5B5B22A91644900D50A57 /* like_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = like_animation.json; sourceTree = "<group>"; };
+		C6D5B5B42A91661F00D50A57 /* TitleChevronView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TitleChevronView.swift; path = tmChat/Components/TitleChevronView.swift; sourceTree = SOURCE_ROOT; };
+		C6D5B5B62A91724600D50A57 /* ProfileInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileInfoView.swift; path = tmChat/Controllers/Profile/Views/ProfileInfoView.swift; sourceTree = SOURCE_ROOT; };
+		C6E96EB02A90EDF20056F4CC /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileHeaderView.swift; path = tmChat/Controllers/Profile/Views/ProfileHeaderView.swift; sourceTree = SOURCE_ROOT; };
+		C6F767B22A955B4F00535EE7 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = tmChat/Typealiases.swift; sourceTree = SOURCE_ROOT; };
+		C6F767B42A9632DD00535EE7 /* PermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PermissionManager.swift; path = tmChat/Services/PermissionManager.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,13 +482,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				846EEB792D8A8AAB33C71BDA /* Pods_tmchat.framework in Frameworks */,
+				A5684305EC54C9CC375EBCA0 /* Pods_tmchat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8117387ADCBDF6681A20CEBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C3DD52E38434C45BC794EC4A /* Pods_tmchat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8B4123822A2002CF0058A4B6 /* OnePost */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,11 +767,14 @@
 		C0B5163A29C46DF800568465 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C627D0D82A9542A40010E585 /* WebRTC */,
 				C0B5163829C46DF300568465 /* VoiceRecorder.swift */,
 				C0B5163B29C46E3800568465 /* VoicePlayer.swift */,
 				C059C9C029DECB880049D93D /* ContactService.swift */,
 				C03948EA29EDFBFD006B7582 /* DownloadService.swift */,
 				C0B46AAE29FC57EA00D2A9B1 /* CacheManager.swift */,
+				C6F767B42A9632DD00535EE7 /* PermissionManager.swift */,
+				C6D2C23E2A976A880083D06C /* SoundPlayer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -788,7 +847,7 @@
 				C0EE16CA29B68B8E0032F165 /* tmchat */,
 				C0EE16C929B68B8E0032F165 /* Products */,
 				E8CAEB82311A7772D67C147D /* Pods */,
-				C6B884AD5EB85AAF85F5E1E0 /* Frameworks */,
+				8117387ADCBDF6681A20CEBB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -808,6 +867,7 @@
 				C009BF7029CC18710065B807 /* RxSubjects.swift */,
 				C0B515E529BDD2BD00568465 /* Protocols.swift */,
 				C0B5164629C4785B00568465 /* Enums.swift */,
+				C6F767B22A955B4F00535EE7 /* Typealiases.swift */,
 				C06A564829D77AF8008B14DF /* Socket */,
 				C0125CA829CD6A1F00FF8ABD /* DB */,
 				C009BF5929CAD4A30065B807 /* Requests */,
@@ -837,10 +897,12 @@
 		C0EE170529B8EB760032F165 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C6D5B5B22A91644900D50A57 /* like_animation.json */,
 				C0EE16FF29B8E8700032F165 /* Localizable.strings */,
 				C0EE16D429B68B8F0032F165 /* Assets.xcassets */,
 				C0EE170329B8EB550032F165 /* roboto-flex.ttf */,
 				C0EE16D929B68B8F0032F165 /* Info.plist */,
+				C6D2C2362A9672970083D06C /* Localizable.stringsdict */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -880,6 +942,9 @@
 		C0EE171329B916A40032F165 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C6D2C2392A9675AC0083D06C /* Comments */,
+				C627D0CB2A94E5920010E585 /* Call */,
+				C67A7F4B2A93FF10002DDDF4 /* ProfileTab */,
 				C03948EC29EE8AC2006B7582 /* Complain */,
 				C0EE17CE29BBEB400032F165 /* Auth */,
 				C0EE171529B916C00032F165 /* Tabbar */,
@@ -924,6 +989,8 @@
 				C0B515F429BF39C800568465 /* ViewWithSwitch.swift */,
 				C06A566D29DA7F67008B14DF /* CustomCornerView.swift */,
 				C03948E829EDF20C006B7582 /* SpinnerView.swift */,
+				C6D5B5B42A91661F00D50A57 /* TitleChevronView.swift */,
+				C627D0DD2A954A4E0010E585 /* CallSnackbar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -961,9 +1028,9 @@
 		C0EE173D29B9184E0032F165 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				C6E96EAF2A90EDE60056F4CC /* Views */,
 				C0EE174829B918F90032F165 /* ProfileVM.swift */,
 				C0EE174629B918EA0032F165 /* ProfileVC.swift */,
-				C0EE174429B918DD0032F165 /* ProfileView.swift */,
 				C0B5161729C1935800568465 /* ProfileTbHeader.swift */,
 				C03948DF29EDC93C006B7582 /* ProfileMoreBS.swift */,
 			);
@@ -980,6 +1047,7 @@
 				C0EE17EF29BC37C30032F165 /* NSMutableAttributedString.swift */,
 				C0B7FE1129E73A4E00C91367 /* AVPlayer.swift */,
 				C0EE17F129BC37D70032F165 /* UIKit */,
+				C627D0D62A951A800010E585 /* Dictionary.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -1010,6 +1078,7 @@
 				C0B515C029BCAA6800568465 /* SearchFieldBtn.swift */,
 				C0B515F629BF3B7F00568465 /* ProfileIconTextBtn.swift */,
 				C0B5162529C2C56A00568465 /* BottomSheetBtn.swift */,
+				C627D0D02A94E8A40010E585 /* BluredButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1074,6 +1143,7 @@
 				C0EE176329B9C33D0032F165 /* UICollectionView.swift */,
 				C0EE176129B9C33D0032F165 /* UITableView.swift */,
 				C06A566F29DA8042008B14DF /* UIBezierPath.swift */,
+				C627D0D42A95003A0010E585 /* UIWindow.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1136,19 +1206,68 @@
 			path = Username;
 			sourceTree = "<group>";
 		};
-		C6B884AD5EB85AAF85F5E1E0 /* Frameworks */ = {
+		C627D0CB2A94E5920010E585 /* Call */ = {
 			isa = PBXGroup;
 			children = (
-				C2ADF585AEDE0F8EC91D10D1 /* Pods_tmchat.framework */,
+				C627D0CE2A94E6580010E585 /* CallVC.swift */,
+				C6D2C2402A9784570083D06C /* LocalVideoView.swift */,
+				C6D2C2422A9785440083D06C /* VideoView.swift */,
 			);
-			name = Frameworks;
+			path = Call;
+			sourceTree = "<group>";
+		};
+		C627D0D82A9542A40010E585 /* WebRTC */ = {
+			isa = PBXGroup;
+			children = (
+				C627D0D22A94F1B70010E585 /* SignalingClient.swift */,
+				C627D0C62A94D2500010E585 /* WebRTCClient.swift */,
+				C627D0DB2A95464C0010E585 /* SDP.swift */,
+			);
+			path = WebRTC;
+			sourceTree = "<group>";
+		};
+		C67A7F4B2A93FF10002DDDF4 /* ProfileTab */ = {
+			isa = PBXGroup;
+			children = (
+				C67A7F522A9420DC002DDDF4 /* AppSettings */,
+				C67A7F4C2A93FF38002DDDF4 /* ProfileTabVC.swift */,
+				C67A7F502A940089002DDDF4 /* SettingsCell.swift */,
+			);
+			path = ProfileTab;
+			sourceTree = "<group>";
+		};
+		C67A7F522A9420DC002DDDF4 /* AppSettings */ = {
+			isa = PBXGroup;
+			children = (
+				C67A7F532A9420ED002DDDF4 /* AppSettingsVC.swift */,
+			);
+			path = AppSettings;
+			sourceTree = "<group>";
+		};
+		C6D2C2392A9675AC0083D06C /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				C6D2C23A2A9675C10083D06C /* CommentsVC.swift */,
+				C6D2C23C2A9676050083D06C /* CommentCell.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		C6E96EAF2A90EDE60056F4CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C0EE174429B918DD0032F165 /* ProfileView.swift */,
+				C6E96EB02A90EDF20056F4CC /* ProfileHeaderView.swift */,
+				C6D5B5B62A91724600D50A57 /* ProfileInfoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E8CAEB82311A7772D67C147D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				295E16FFC2BC765D024C0B32 /* Pods-tmchat.debug.xcconfig */,
-				C0C65528F5A56D05D785443D /* Pods-tmchat.release.xcconfig */,
+				1858992E3A4731D7FEF4DB25 /* Pods-tmchat.debug.xcconfig */,
+				65805ED8D92B064ADA6463EA /* Pods-tmchat.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1160,11 +1279,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0EE16DC29B68B8F0032F165 /* Build configuration list for PBXNativeTarget "tmchat" */;
 			buildPhases = (
-				EF15607AC262DACE3D2D4D5F /* [CP] Check Pods Manifest.lock */,
+				0D7F35118E2B0A6C6394034D /* [CP] Check Pods Manifest.lock */,
 				C0EE16C429B68B8E0032F165 /* Sources */,
 				C0EE16C529B68B8E0032F165 /* Frameworks */,
 				C0EE16C629B68B8E0032F165 /* Resources */,
-				07107004BBF1FDC3C34844C8 /* [CP] Embed Pods Frameworks */,
+				51643AB5F3C0C48B66196320 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1190,7 +1309,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C0EE16C329B68B8E0032F165 /* Build configuration list for PBXProject "tmchat" */;
+			buildConfigurationList = C0EE16C329B68B8E0032F165 /* Build configuration list for PBXProject "tmChat" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1214,35 +1333,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D5B5B32A91644900D50A57 /* like_animation.json in Resources */,
 				C0EE170429B8EB5F0032F165 /* roboto-flex.ttf in Resources */,
 				C0EE16FD29B8E8700032F165 /* Localizable.strings in Resources */,
 				8B4123812A1FD58F0058A4B6 /* GoogleService-Info.plist in Resources */,
 				C0FD76EB29F9244400F47FD6 /* Launch Screen.storyboard in Resources */,
 				C0EE16D529B68B8F0032F165 /* Assets.xcassets in Resources */,
+				C6D2C2342A9672970083D06C /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07107004BBF1FDC3C34844C8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF15607AC262DACE3D2D4D5F /* [CP] Check Pods Manifest.lock */ = {
+		0D7F35118E2B0A6C6394034D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1264,6 +1368,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		51643AB5F3C0C48B66196320 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tmchat/Pods-tmchat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1280,6 +1401,7 @@
 				C009BF6929CAF1CB0065B807 /* CheckOtpParams.swift in Sources */,
 				C009BF3929C892650065B807 /* MsgCellReplyIcon.swift in Sources */,
 				C0B46AB229FC5A7B00D2A9B1 /* SelectLangBS.swift in Sources */,
+				C67A7F4D2A93FF38002DDDF4 /* ProfileTabVC.swift in Sources */,
 				C009BF5D29CAD4EC0065B807 /* ApiPath.swift in Sources */,
 				C03D1D0129E28B55006DAB40 /* SearchView.swift in Sources */,
 				C0254A5429D28DD5009655AF /* RoomTable.swift in Sources */,
@@ -1307,6 +1429,8 @@
 				C0B5165D29C56A5400568465 /* TextView.swift in Sources */,
 				C0EE17E429BC30000032F165 /* LoadingView.swift in Sources */,
 				C0EE179029BA054C0032F165 /* ChatlistDatasource.swift in Sources */,
+				C6D5B5B52A91661F00D50A57 /* TitleChevronView.swift in Sources */,
+				C6F767B52A9632DD00535EE7 /* PermissionManager.swift in Sources */,
 				C0EE171E29B917150032F165 /* ChatlistVM.swift in Sources */,
 				C059C9E929E275FC0049D93D /* ContactListView.swift in Sources */,
 				C0EE17D829BBED600032F165 /* ScrollView.swift in Sources */,
@@ -1324,6 +1448,8 @@
 				C0125CAE29CD82AC00FF8ABD /* DatabaseManager.swift in Sources */,
 				C0B5162E29C2FBBA00568465 /* AttachmentOptionsBS.swift in Sources */,
 				C0B515F729BF3B7F00568465 /* ProfileIconTextBtn.swift in Sources */,
+				C6D5B5B72A91724600D50A57 /* ProfileInfoView.swift in Sources */,
+				C6D2C23D2A9676050083D06C /* CommentCell.swift in Sources */,
 				C0B515E029BDBE2300568465 /* CheckBtn.swift in Sources */,
 				C0EE17DA29BBEF010032F165 /* TextField.swift in Sources */,
 				C0EE17D429BBEB730032F165 /* EnterPhoneVM.swift in Sources */,
@@ -1333,7 +1459,9 @@
 				C03948F029EE8AE2006B7582 /* ComplainView.swift in Sources */,
 				C0B5164529C474A900568465 /* BottomSheetView.swift in Sources */,
 				C0EE17DE29BBF2EC0032F165 /* TextBtn.swift in Sources */,
+				C627D0C72A94D2500010E585 /* WebRTCClient.swift in Sources */,
 				C06A567029DA8042008B14DF /* UIBezierPath.swift in Sources */,
+				C6D2C23B2A9675C10083D06C /* CommentsVC.swift in Sources */,
 				C0EE17D229BBEB690032F165 /* EnterPhoneView.swift in Sources */,
 				C0EE176929B9C3530032F165 /* UIImageView.swift in Sources */,
 				C0EE16F929B8E2800032F165 /* CBTabBarButton.swift in Sources */,
@@ -1353,11 +1481,14 @@
 				C0EE17E329BC30000032F165 /* BaseView.swift in Sources */,
 				C0EE17D029BBEB5C0032F165 /* EnterPhoneVC.swift in Sources */,
 				C0B515EF29BEED5300568465 /* SheetPresentationController.swift in Sources */,
+				C67A7F542A9420ED002DDDF4 /* AppSettingsVC.swift in Sources */,
 				C0B515F529BF39C800568465 /* ViewWithSwitch.swift in Sources */,
+				C627D0D32A94F1B70010E585 /* SignalingClient.swift in Sources */,
 				C009BF3529C8561B0065B807 /* MsgSelectionBtn.swift in Sources */,
 				C009BF4329C99B2B0065B807 /* MsgContentView.swift in Sources */,
 				C0EE171229B8ED780032F165 /* Response.swift in Sources */,
 				C0EE177929B9CF170032F165 /* UIEdgeInsets.swift in Sources */,
+				C6E96EB12A90EDF20056F4CC /* ProfileHeaderView.swift in Sources */,
 				C0B5162929C2F8EB00568465 /* MessagingActionsBS.swift in Sources */,
 				C0125CA129CC367C00FF8ABD /* ImageListVC.swift in Sources */,
 				C0B515BB29BCA5EE00568465 /* AddPostView.swift in Sources */,
@@ -1404,6 +1535,7 @@
 				C009BF5029C9D9D20065B807 /* Message.swift in Sources */,
 				C042FA6329BC486000B16864 /* FeedMediaCell.swift in Sources */,
 				C0125C9D29CC365A00FF8ABD /* ImageListView.swift in Sources */,
+				C627D0CF2A94E6580010E585 /* CallVC.swift in Sources */,
 				C0EE171029B8ED440032F165 /* UploadImage.swift in Sources */,
 				C0EE17FC29BC43100032F165 /* UsernameView.swift in Sources */,
 				C0B5161829C1935800568465 /* ProfileTbHeader.swift in Sources */,
@@ -1411,16 +1543,22 @@
 				C03948E029EDC93C006B7582 /* ProfileMoreBS.swift in Sources */,
 				C06A564C29D78146008B14DF /* SocektOnModels.swift in Sources */,
 				C06A566E29DA7F67008B14DF /* CustomCornerView.swift in Sources */,
+				C627D0D72A951A800010E585 /* Dictionary.swift in Sources */,
 				C0EE175829B9A8430032F165 /* ProfileImg.swift in Sources */,
 				C0EE176F29B9C5360032F165 /* ChatListTbCell.swift in Sources */,
 				C0EE175429B91EB30032F165 /* UIView.swift in Sources */,
+				C6D2C2412A9784570083D06C /* LocalVideoView.swift in Sources */,
 				C0EE176529B9C33E0032F165 /* UITableView.swift in Sources */,
+				C6D2C23F2A976A880083D06C /* SoundPlayer.swift in Sources */,
 				C0B5160F29C05FDC00568465 /* ChatProfilePageVC.swift in Sources */,
 				C009BF4E29C9D82B0065B807 /* FileMsgContentView.swift in Sources */,
 				C0B515E429BDC32000568465 /* ImgCell.swift in Sources */,
 				C0EE17D629BBEB910032F165 /* Header.swift in Sources */,
+				C627D0D12A94E8A40010E585 /* BluredButton.swift in Sources */,
 				C009BF3729C85F170065B807 /* PanGestureRecognizer.swift in Sources */,
+				C627D0D52A95003A0010E585 /* UIWindow.swift in Sources */,
 				C0B7FE0529E54DD100C91367 /* VoiceMsgTbCell.swift in Sources */,
+				C627D0DC2A95464C0010E585 /* SDP.swift in Sources */,
 				C0B515ED29BEED4E00568465 /* SheetTransition.swift in Sources */,
 				C03948E729EDED9E006B7582 /* FeedMoreBS.swift in Sources */,
 				C0B7FE0729E54DEB00C91367 /* VoiceMsgContentView.swift in Sources */,
@@ -1432,6 +1570,7 @@
 				C03D1D0329E28B5F006DAB40 /* SearchVM.swift in Sources */,
 				C0B5163C29C46E3800568465 /* VoicePlayer.swift in Sources */,
 				C0B5163E29C46FA500568465 /* VoiceRecordResult.swift in Sources */,
+				C627D0DE2A954A4E0010E585 /* CallSnackbar.swift in Sources */,
 				C06A564329D60F06008B14DF /* Helpers.swift in Sources */,
 				C0EE176729B9C33E0032F165 /* UICollectionView.swift in Sources */,
 				C0EE17EA29BC37120032F165 /* OtpVM.swift in Sources */,
@@ -1443,9 +1582,11 @@
 				C0EE174129B9188B0032F165 /* FeedVC.swift in Sources */,
 				C0EE175A29B9AD390032F165 /* UIFont.swift in Sources */,
 				C0EE170C29B8EC7C0032F165 /* UserDefaults.swift in Sources */,
+				C6D2C2432A9785440083D06C /* VideoView.swift in Sources */,
 				C009BF6B29CAF2900065B807 /* CheckOtpResponse.swift in Sources */,
 				C0B46AAC29FC560700D2A9B1 /* PopUpLauncher.swift in Sources */,
 				C0B5161F29C1AB0900568465 /* NotificationsVM.swift in Sources */,
+				C67A7F512A940089002DDDF4 /* SettingsCell.swift in Sources */,
 				C009BF6F29CAF49D0065B807 /* UpdateUserParams.swift in Sources */,
 				C018472629E2A6BA0071CFEF /* FeedRequests.swift in Sources */,
 				C0EE177B29B9D3CD0032F165 /* SearchHeader.swift in Sources */,
@@ -1453,6 +1594,7 @@
 				C0EE17EE29BC37340032F165 /* OtpView.swift in Sources */,
 				C0B515B229BC5BBB00568465 /* SeenCountView.swift in Sources */,
 				C059C9EB29E276100049D93D /* ContactListVM.swift in Sources */,
+				C6F767B32A955B4F00535EE7 /* Typealiases.swift in Sources */,
 				C0B515B629BC5DDA00568465 /* FabBtn.swift in Sources */,
 				C03948E929EDF20C006B7582 /* SpinnerView.swift in Sources */,
 				C0EE17E229BC30000032F165 /* NoSmthView.swift in Sources */,
@@ -1485,6 +1627,17 @@
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
+		};
+		C6D2C2362A9672970083D06C /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C6D2C2352A9672970083D06C /* en */,
+				C6D2C2372A96729B0083D06C /* ru */,
+				C6D2C2382A96729C0083D06C /* tk */,
+			);
+			name = Localizable.stringsdict;
+			path = tmChat/Resources;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 
@@ -1607,7 +1760,7 @@
 		};
 		C0EE16DD29B68B8F0032F165 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 295E16FFC2BC765D024C0B32 /* Pods-tmchat.debug.xcconfig */;
+			baseConfigurationReference = 1858992E3A4731D7FEF4DB25 /* Pods-tmchat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1615,7 +1768,7 @@
 				CODE_SIGN_ENTITLEMENTS = tmchat/tmchat.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LH9V93BQ9M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tmchat/Resources/Info.plist;
@@ -1635,7 +1788,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "tmchat-123";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1647,14 +1800,14 @@
 		};
 		C0EE16DE29B68B8F0032F165 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0C65528F5A56D05D785443D /* Pods-tmchat.release.xcconfig */;
+			baseConfigurationReference = 65805ED8D92B064ADA6463EA /* Pods-tmchat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = tmchat/tmchat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LH9V93BQ9M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tmchat/Resources/Info.plist;
@@ -1674,7 +1827,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "tmchat-123";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1686,7 +1839,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C0EE16C329B68B8E0032F165 /* Build configuration list for PBXProject "tmchat" */ = {
+		C0EE16C329B68B8E0032F165 /* Build configuration list for PBXProject "tmChat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0EE16DA29B68B8F0032F165 /* Debug */,

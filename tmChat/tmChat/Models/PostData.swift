@@ -19,11 +19,22 @@ struct PostData: Codable {
     var description: String?
     var publishAt: String?
     var isLikeable: Bool
+    var isCommentable: Bool
     var isLiked: Bool
     var likeCount: String
     var viewCount: String
     var files: [File]?
     var createdAt: String?
+    var comments: [PostComment]?
+}
+
+struct PostComment: Codable {
+
+    var id: Int
+    var postId: String
+    var commenterId: String?
+    var comment: String?
+    var commenter: User?
 }
 
 struct File: Codable {

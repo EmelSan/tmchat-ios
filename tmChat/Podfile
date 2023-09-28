@@ -1,5 +1,7 @@
 # Uncomment the next line to define a global platform for your project
- platform :ios, '11.0'
+
+IOS_DEPLOYMENT_TARGET='12.0'
+platform :ios, IOS_DEPLOYMENT_TARGET
 
 target 'tmchat' do
   use_frameworks!
@@ -10,6 +12,7 @@ target 'tmchat' do
   pod 'GRDB.swift', '~> 5.26'
   pod 'SQLite.swift', '~> 0.12.0'
   pod 'Starscream', '~> 4.0.0'
+  pod 'GoogleWebRTC'
   pod 'RxSwift', '6.5.0'
   pod 'Differ'
   
@@ -22,7 +25,27 @@ target 'tmchat' do
   pod 'TLPhotoPicker', '~> 2.1.0'
   pod 'Localize-Swift', '~> 3.2'
  
-	pod 'Parchment', '~> 3.2'
+  pod 'Parchment', '~> 3.2'
   pod 'CropViewController'
   pod 'MXParallaxHeader', '~> 1.1.0'
+  pod 'lottie-ios'
 end
+
+#PROJECT_ROOT_DIR = File.dirname(File.expand_path(__FILE__))
+#PODS_DIR = File.join(PROJECT_ROOT_DIR, 'Pods')
+#PODS_TARGET_SUPPORT_FILES_DIR = File.join(PODS_DIR, 'Target Support Files')
+#
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    if target.respond_to?(:product_type) and target.product_type == "com.apple.product-type.bundle"
+      target.build_configurations.each do |config|
+        config.build_settings['CODE_SIGNING_ALLOWED'] = 'NO'
+      end
+    end
+    target.build_configurations.each do |config|
+      config.build_settings['LD_NO_PIE'] = 'NO'
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+    end
+  end
+end
+#

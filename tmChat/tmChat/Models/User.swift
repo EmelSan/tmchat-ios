@@ -20,6 +20,22 @@ struct User: Codable {
     var isActive: Bool?
     var roomUUID: String?
     var postCount: String?
+
+    var fullName: String? {
+        let value = [firstName ?? "", lastName ?? ""].joined(separator: " ").trimmingCharacters(in: .whitespaces)
+
+        if value.isEmpty {
+            return nil
+        }
+        return value
+    }
+
+    var formattedUsername: String {
+        guard let username else { return "" }
+        guard String(username.dropFirst()) != "@" else { return username }
+
+        return "@".appending(username)
+    }
 }
 
 struct UserWrapper: Codable {

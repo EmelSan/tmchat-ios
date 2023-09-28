@@ -10,8 +10,8 @@ import UIKit.UIStackView
 extension UIStackView {
 
     convenience init(axis: NSLayoutConstraint.Axis,
-                     alignment: Alignment,
-                     spacing: CGFloat,
+                     alignment: Alignment = .fill,
+                     spacing: CGFloat = .zero,
                      edgeInsets: UIEdgeInsets? = nil,
                      distribution: Distribution? = nil,
                      backgroundColor: UIColor? = nil,

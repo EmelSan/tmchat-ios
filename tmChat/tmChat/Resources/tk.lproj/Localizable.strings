@@ -14,6 +14,34 @@
 "minutes_ago" = " minut mundan öň";
 "just_now" = "ýaňyja";
 
+"app_settings" = "Настройки приложения";
+"app_settings_description" = "Профиль, язык, приватность";
+"contacts" = "Контакты";
+"contacts_description" = "Сортировка, управление, поиск";
+"my_cloud" = "Мое облако";
+"my_cloud_description" = "Сохраненные файлы и сообщения";
+"calls" = "Звонки";
+"calls_description" = "История звонков, коференции";
+"help" = "Помощь";
+"help_description" = "Справка, оставитиь отзыв";
+"app_description" = "О приложении, история изменений";
+"notifications" = "Duýduryşlar";
+"notifications_description" = "Состояние, управление, звуки";
+"privacy" = "Gizlinlik";
+"privacy_description" = "Пароль приложения, каналы";
+"devices" = "Устройства";
+"devices_description" = "Активные сессии";
+"language" = "Dil";
+"language_description" = "Язык приложения";
+"profile_settings" = "Настройки профиля";
+"profile_settings_description" = "Имя пользователя, выход";
+"incoming_call" = "Входящий звонок";
+"outgoing_call" = "Исходящий звонок";
+"empty_comments" = "Teswirler ýok. Birinji bol.";
+"comments_title" = "Teswirler";
+"comment_placeholder" = "введите ваш текст|";
+
+"about_yourself" = "Men barada";
 "yesterday" = "Düýn";
 "today" = "Bu gün";
 "smth_went_wrong" = "Näsazlyklar ýüze çykdy";
@@ -21,6 +49,7 @@
 "no_connection" = "Birikme ýok. Birikmäňizi barlaň we täzeläň";
 "no_content" = "Maglumat ýok";
 "settings" = "Sazlamalar";
+"send_comment" = "Teswir ýazmak";
 "like" = "Hala";
 "likes" = "Haladylar";
 "global_search" = "Global gözleg";
@@ -60,7 +89,6 @@
 "call" = "JAň et";
 "search" = "Gözle";
 "more" = "Ýene";
-"notifications" = "Duýduryşlar";
 "see_my_posts" = "Postlarymy görmek";
 "images" = "Suratlar";
 "videos" = "Wideolar";
@@ -84,6 +112,7 @@
 "could_not_save" = "Ýatda saklmakda näsazlyklar çykdy";
 "could_not_download" = "Ýüklemekde näsazlyklar çykdy";
 "new_post" = "Post goş";
+"create_new_post" = "Täze post";
 "complain" = "Şikaýat";
 "delete_post" = "Posty poz";
 "could_not_add" = "Posty goşmakda näsazlyklar ýüze çykdy";
@@ -95,7 +124,7 @@
 "publish" = "Goş";
 "add_post_placeholder" = "Postyň beýanyny ýaz";
 "all" = "Hemmesi";
-"contacts" = "Diňe kontaktlarym";
+"only_contacts" = "Diňe kontaktlarym";
 "nobody" = "Hiç kim";
 "private_settings" = "Hususy sazlamalar";
 "who_can_see_post" = "Posty kim görüp biljekdigini saýlaň";
@@ -111,9 +140,7 @@
 "clear_cache" = "Siz hakykatdanam keşi arassalamak isleýärsiňizmi?";
 "clear_cache_desc" = "Bu enjamdan ähli keş keş ýok pozular";
 "update_profile" = "Profili täzeläň";
-"privacy" = "Gizlinlik";
 "memory" = "Keş";
-"language" = "Dil";
 "delete_acc" = "Hasaby poz";
 "logout" = "Çyk";
 "about_us" = "Biz barada";

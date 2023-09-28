@@ -33,10 +33,22 @@ class UserDataStack: UIStackView {
     let trailingBtn = IconBtn(image: UIImage(named: "more")?.withRenderingMode(.alwaysTemplate), color: .accent)
 
     var clickCallback: ( ()->() )?
+    var doubleClickCallback: ( ()->() )?
     
     init(withBackBtn: Bool = false) {
         super.init(frame: .zero)
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(click)))
+
+        let clickGesture = UITapGestureRecognizer(target: self, action: #selector(click))
+        clickGesture.delaysTouchesBegan = true
+
+        let doubleClickGesture = UITapGestureRecognizer(target: self, action: #selector(onDoubleClick))
+        doubleClickGesture.numberOfTapsRequired = 2
+        doubleClickGesture.delaysTouchesBegan = true
+
+        clickGesture.require(toFail: doubleClickGesture)
+        addGestureRecognizer(clickGesture)
+        addGestureRecognizer(doubleClickGesture)
+
         setupView()
         
         
@@ -95,5 +107,10 @@ class UserDataStack: UIStackView {
     
     @objc func click(){
         clickCallback?()
+    }
+
+    @objc
+    private func onDoubleClick() {
+        doubleClickCallback?()
     }
 }

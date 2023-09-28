@@ -14,7 +14,7 @@ class AddPostIncognitoBS: UIViewController {
     var all = BottomSheetBtn(title: "all".localized(),
                              iconName: "people")
     
-    var contacts = BottomSheetBtn(title: "contacts".localized(),
+    var contacts = BottomSheetBtn(title: "only_contacts".localized(),
                                   iconName: "profile-empty")
     
     var nobody = BottomSheetBtn(title: "nobody".localized(),

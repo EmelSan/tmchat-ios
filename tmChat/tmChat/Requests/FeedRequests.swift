@@ -45,6 +45,20 @@ class FeedRequests {
                        path: ApiPath.ADD_POST,
                        completionHandler: completionHandler)
     }
+
+    func addComment(uuid: String, comment: String, completionHandler: @escaping (Response<[PostComment]>?) -> ()) {
+        Network.perform(url: ApiPath.POST+"/\(uuid)/comment",
+                        method: .post,
+                        params: ["comment": comment],
+                        encoder: JSONParameterEncoder.default,
+                        completionHandler: completionHandler)
+    }
+
+    func getComments(uuid: String, completionHandler: @escaping (Response<[PostComment]>?) -> ()) {
+        Network.perform(url: ApiPath.POST+"/\(uuid)/comment",
+                        params: Empty(),
+                        completionHandler: completionHandler)
+    }
     
     func deletePost(uuid: String,
                  completionHandler: @escaping (Response<Empty>?)->()) {

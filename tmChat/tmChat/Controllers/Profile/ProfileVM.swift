@@ -11,6 +11,7 @@ class ProfileVM {
     
     var user: Binder<User?> = Binder(nil)
     var data: Binder<[PostData]> = Binder([])
+    var chatRoomUUID: Binder<String?> = Binder(nil)
     var inProgress: Binder<Bool> = Binder(false)
     var noContent: Binder<Bool> = Binder(false)
     var noConnection: Binder<Bool> = Binder(false)
@@ -19,8 +20,12 @@ class ProfileVM {
     var lastPage = false
     var postCount: Int = 0
 
-    func getUser(){
-        UserRequests.shared.getUser(id: params.ownerId ?? AccUserDefaults.id) { [weak self] resp in
+    var profileID: String {
+        params.ownerId ?? AccUserDefaults.id
+    }
+
+    func getUser() {
+        UserRequests.shared.getUser(id: profileID) { [weak self] resp in
             self?.user.value = resp?.data
         }
     }
@@ -55,6 +60,12 @@ class ProfileVM {
             }
 
             s.params.page = forPage
+        }
+    }
+
+    func getChatRoomID(completion: @escaping Closure<String?>) {
+        ChatRequests.shared.createRoom(userId: profileID) { [weak self] response in
+            completion(response?.data?.uuid)
         }
     }
     

@@ -47,9 +47,6 @@ public struct TLPHAsset {
             guard let phAsset = self.phAsset else { return nil }
             return TLPhotoLibrary.fullResolutionImageData(asset: phAsset)
         }
-        set {
-            self.fullResolutionImage = newValue
-        }
     }
     
     public func extType(defaultExt: ImageExtType = .png) -> ImageExtType {

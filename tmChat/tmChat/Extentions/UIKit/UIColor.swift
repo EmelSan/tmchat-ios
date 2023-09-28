@@ -22,8 +22,11 @@ extension UIColor {
     static let lee = UIColor(red: 0.647, green: 0.647, blue: 0.647, alpha: 1)
     static let bg = UIColor(red: 0.965, green: 0.965, blue: 0.965, alpha: 1)
     static let onBg = UIColor(red: 0.906, green: 0.928, blue: 0.954, alpha: 1)
-    
-    
+    static let onBg1 = UIColor(hexString: "#E7EDF3")!
+    static let lightClear = UIColor(hexString: "#FFFFFF")!
+    static let latina_metis = UIColor(hexString: "#A0A4AF")!
+    static let greenWeed = UIColor(hexString: "#178F34")!
+
     
     // trailing swipe
     static let muteColor = UIColor(red: 0.933, green: 0.933, blue: 0.933, alpha: 1)

@@ -8,6 +8,10 @@
 import Foundation
 import Starscream
 
+extension Notification.Name {
+    static let socketClientDidReceiveEvent = Notification.Name("SocketClient.didReceiveEvent")
+}
+
 class SocketClient: NSObject, WebSocketDelegate {
     
     static let shared = SocketClient()
@@ -41,7 +45,7 @@ class SocketClient: NSObject, WebSocketDelegate {
         socket.delegate = self
         socket.connect()
 
-        print(request.url)
+        print(request.url as Any)
         startReconnetTimer()
     }
 
@@ -81,6 +85,12 @@ class SocketClient: NSObject, WebSocketDelegate {
 
         case .text(let string):
             print("Received text: \(string)")
+            SocketOn.shared.setupOn(string)
+
+        case .binary(let data):
+            guard let string = String(data: data, encoding: .utf8) else { return }
+
+            print("Received data: \(string)")
             SocketOn.shared.setupOn(string)
 
         case .ping( _ ):
@@ -126,19 +136,24 @@ class SocketClient: NSObject, WebSocketDelegate {
 
 
 extension SocketClient {
+
     func sendMsg(emitMsg: EmitMsg) {
-        if socket == nil { return }
+        sendMsg(data: emitMsg, emit: .new)
 
         if isConnected == false {
             MessageTable.shared.updateMsgToError(msgId: emitMsg.localId)
-            return
         }
-        
-        let emitData = SocketEvent(event: SocketEmits.new.rawValue,
-                                   data: emitMsg)
-        
+    }
+
+    func sendMsg<T: Codable>(data: T, emit: SocketEmits) {
+        guard socket != nil, isConnected else { return }
+
+        let emitData = SocketEvent(event: emit.rawValue, data: data)
+
         guard let jsonData = try? JSONEncoder().encode(emitData) else { return }
+
         let jsonString = String(data: jsonData, encoding: .utf8)
+
         socket.write(string: jsonString ?? "", completion: {
             print("completed ", jsonString as Any)
         })
@@ -147,26 +162,27 @@ extension SocketClient {
     func sendRead(data: ReadMsg){
         if socket == nil { return }
 
-        let emitData = SocketEvent(event: SocketEmits.read.rawValue,
-                                   data: data)
+        let emitData = SocketEvent(event: SocketEmits.read.rawValue, data: data)
         
         guard let jsonData = try? JSONEncoder().encode(emitData) else { return }
+
         let jsonString = String(data: jsonData, encoding: .utf8)
+
         socket.write(string: jsonString ?? "", completion: {
             print("completed ", jsonString as Any)
-            MessageTable.shared.readRoomMsg(date: data.date ?? "",
-                                            roomId: data.roomId)
+            MessageTable.shared.readRoomMsg(date: data.date ?? "", roomId: data.roomId)
         })
     }
     
     func sendMsgDelete(uuids: [String]){
         if socket == nil { return }
         let data = ["messageIds": uuids]
-        let emitData = SocketEvent(event: SocketEmits.deleteMsg.rawValue,
-                                   data: data)
+        let emitData = SocketEvent(event: SocketEmits.deleteMsg.rawValue, data: data)
         
         guard let jsonData = try? JSONEncoder().encode(emitData) else { return }
+
         let jsonString = String(data: jsonData, encoding: .utf8)
+
         socket.write(string: jsonString ?? "", completion: {
             print("completed ", jsonString as Any)
             

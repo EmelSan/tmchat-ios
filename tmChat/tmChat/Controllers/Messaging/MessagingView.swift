@@ -65,7 +65,7 @@ class MessagingView: UIView {
                                           bottomInsetBg])
         
 //        header.addAudio()
-        header.trailingBtn.isHidden = true
+//        header.trailingBtn.isHidden = true
         
         header.layoutMargins.bottom = 14
         header.bg.backgroundColor = .white

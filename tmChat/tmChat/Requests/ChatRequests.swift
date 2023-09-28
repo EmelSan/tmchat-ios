@@ -59,11 +59,16 @@ class ChatRequests {
                         completionHandler: completionHandler)
     }
 
+    // FIXME: It's first request on app start, replace logout logic
     func getRooms(completionHandler: @escaping (Response<[Room]>?)->()) {
-        
         Network.perform(url: ApiPath.GET_ROOMS,
-                        params: Empty(),
-                        completionHandler: completionHandler)
+                        params: Empty()) { [weak self] (response: Response<[Room]>?) in
+            completionHandler(response)
+
+            if response?.code == 401 {
+                (UIApplication.shared.delegate as? AppDelegate)?.logout()
+            }
+        }
     }
     
     func uploadMedia(file: UploadImage,
@@ -80,6 +85,5 @@ class ChatRequests {
                        path: ApiPath.UPLOAD_MEDIA,
                        completionHandler: completionHandler)
     }
-
 }
 

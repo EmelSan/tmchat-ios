@@ -32,8 +32,6 @@ class ProfileVC: UIViewController {
 
         if self.type != .own {
             mainView.otherProfile()
-        } else {
-            mainView.header.setupForOwnProfile()
         }
     }
     
@@ -43,6 +41,7 @@ class ProfileVC: UIViewController {
     
     override func loadView() {
         super.loadView()
+
         view = ProfileView()
         view.backgroundColor = .bg
     }
@@ -89,8 +88,16 @@ class ProfileVC: UIViewController {
             self?.mainView.tableView.reloadData()
         }
         
-        viewModel.user.bind { [weak self] _ in
-            self?.mainView.tableView.reloadData()
+        viewModel.user.bind { [weak self] user in
+            guard let self = self else { return }
+
+            self.mainView.tableView.reloadData()
+            self.mainView.setAvatar(url: ApiPath.url(user?.avatar ?? ""), colorCode: user?.colorCode ?? "#A5A5A5")
+            self.mainView.tableView.setContentOffset(.init(x: .zero, y: -self.mainView.tableView.contentInset.top), animated: false)
+
+            if let username = user?.formattedUsername {
+                self.mainView.header.username = username
+            }
         }
     }
     
@@ -102,12 +109,12 @@ class ProfileVC: UIViewController {
         mainView.header.backBtn.clickCallback = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
-        
-        mainView.header.btn.clickCallback = { [weak self] in
-            self?.navigationController?.pushViewController(SettingsVC(), animated: true)
-//            self?.openEdit()
+        mainView.header.searchBtn.clickCallback = { [weak self] in
+            #warning("handle")
         }
-        
+        mainView.header.moreBtn.clickCallback = { [weak self] in
+            self?.opneBottomSheet()
+        }
         mainView.noConnection.btn.clickCallback = { [weak self] in
             self?.viewModel.getUser()
             self?.viewModel.getFeed(forPage: 1)
@@ -202,6 +209,20 @@ class ProfileVC: UIViewController {
             }
         }
     }
+
+    private func callToUser() {
+        guard let user = viewModel.user.value else { return }
+
+        mainView.loading(true)
+
+        viewModel.getChatRoomID { [weak self] roomID in
+            self?.mainView.loading(false)
+
+            guard let roomID else { return }
+
+            (UIApplication.shared.delegate as? AppDelegate)?.tabbar?.call(friend: user, roomID: roomID)
+        }
+    }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let _ = error {
@@ -213,6 +234,7 @@ class ProfileVC: UIViewController {
 }
 
 extension ProfileVC: ProfileMoreDelegate {
+
     func openEdit() {
         navigationController?.pushViewController(EditProfileVC(), animated: true)
     }
@@ -231,6 +253,7 @@ extension ProfileVC: ProfileMoreDelegate {
 }
 
 extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cellCount = viewModel.data.value.count
         return cellCount == 0 ? 1 : cellCount
@@ -243,10 +266,10 @@ extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTbCell.id, for: indexPath) as! FeedTbCell
-        cell.data = viewModel.data.value[indexPath.row]
+        let post = viewModel.data.value[indexPath.row]
         
-        cell.data = viewModel.data.value[indexPath.row]
-        cell.likeBtn.clickCallback = { [weak self] in
+        cell.data = post
+        cell.likeCallback = { [weak self] in
             self?.viewModel.toggleLike(uuid: cell.data?.uuid ?? "")
         }
         
@@ -254,7 +277,10 @@ extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
             let vc = ProfileVC(type: .user(id: cell.data?.ownerId ?? ""))
             self?.navigationController?.pushViewController(vc, animated: true)
         }
-        
+        cell.commentView.clickCallback = { [weak self] in
+            let vc = CommentsVC(postUUID: post.uuid, comments: post.comments ?? [])
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
         cell.userDataStack.trailingBtn.clickCallback = { [weak self] in
             self?.openFeedBottomSheet(id: cell.data?.uuid ?? "", ownerId: cell.data?.owner.id ?? "", files: cell.data?.files ?? [])
         }
@@ -263,7 +289,7 @@ extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
     }
         
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        print("print", viewModel.user.value, viewModel.inProgress.value)
+        print("print", viewModel.user.value as Any, viewModel.inProgress.value)
         if viewModel.user.value == nil && viewModel.inProgress.value == true {
             return nil
         }
@@ -279,19 +305,23 @@ extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
             header.setupOther()
         }
         
-        header.setupData(data: viewModel.user.value, count: viewModel.postCount)
-        header.searchBtn.isHidden = true
+        header.setupData(data: viewModel.user.value)
+
+        header.editBtn.clickCallback = { [weak self] in
+            self?.openEdit()
+        }
+//        header.notificationBtn.clickCallback = { [weak self] in
+//            #warning("handle")
+//        }
+        header.callBtn.clickCallback = { [weak self] in
+            self?.callToUser()
+        }
         header.moreBtn.clickCallback = { [weak self] in
             self?.opneBottomSheet()
         }
-        
-//        header.notificationBtn.clickCallback = { [weak self] in
-//            print("notification click")
+//        header.contactsBtn.clickCallback = { [weak self] in
+//            self?.openContactList()
 //        }
-
-        header.contactsBtn.clickCallback = { [weak self] in
-            self?.openContactList()
-        }
         
         header.fabBtn.clickCallback = { [weak self] in
             self?.fabClick()
@@ -304,8 +334,10 @@ extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
         let offset = scrollView.contentOffset.y
 
         if DeviceDimensions.width < offset {
+            mainView.header.isScrolled = true
             mainView.addBgToHeader()
         } else {
+            mainView.header.isScrolled = false
             mainView.removeBgFromHeader()
             return
         }

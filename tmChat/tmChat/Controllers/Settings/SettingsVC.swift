@@ -15,24 +15,24 @@ class SettingsVC: UIViewController {
                                                      iconName: "update-profile",
                                                      type: .editProfile)]),
                 
-                SettingsModel(title: "app_settings",
-                              content: [
-//                                SettingModel(title: "notifications",
-//                                                     iconName: "notification",
-//                                                     type: .notification),
+//                SettingsModel(title: "app_settings",
+//                              content: [
+////                                SettingModel(title: "notifications",
+////                                                     iconName: "notification",
+////                                                     type: .notification),
+////
+////                                        SettingModel(title: "privacy",
+////                                                     iconName: "privacy",
+////                                                     type: .privacy),
 //
-//                                        SettingModel(title: "privacy",
-//                                                     iconName: "privacy",
-//                                                     type: .privacy),
-
-                                        SettingModel(title: "memory",
-                                                     iconName: nil,
-                                                     type: .memory),
-                                        
-                                        SettingModel(title: "language",
-                                                     iconName: nil,
-                                                     type: .language),
-                              ]),
+//                                        SettingModel(title: "memory",
+//                                                     iconName: nil,
+//                                                     type: .memory),
+//
+//                                        SettingModel(title: "language",
+//                                                     iconName: nil,
+//                                                     type: .language),
+//                              ]),
                 
                 SettingsModel(title: "account",
                               content: [SettingModel(title: "logout",

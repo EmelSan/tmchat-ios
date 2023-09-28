@@ -21,7 +21,7 @@ class MessagingTextField: UIStackView {
                                    spacing: 0,
                                    distribution: .fill)
         
-    var textView: UITextView = {
+    lazy var textView: UITextView = {
         let t = UITextView()
         t.font = .sb_16_r
         t.isScrollEnabled = false
@@ -29,7 +29,7 @@ class MessagingTextField: UIStackView {
         t.textColor = .lee
         t.textContainer.lineFragmentPadding = 0
         t.textContainerInset = UIEdgeInsets(horizontalEdges: 16, verticalEdges: 10)
-        t.text = "msg_field_placeholder".localized()
+        t.text = placeholderText
         return t
     }()
     
@@ -54,17 +54,32 @@ class MessagingTextField: UIStackView {
     
     var voiceRecordingView = VoiceRecordingView()
 
-    var placeholderText = "msg_field_placeholder".localized()
+    var placeholderText = "msg_field_placeholder".localized() {
+        didSet {
+            guard textView.text == oldValue else { return }
+
+            textView.text = placeholderText
+        }
+    }
+
+    var canSendAttachment = true {
+        didSet {
+            setupSendAddButton()
+            setupAttachButtons()
+        }
+    }
+
+    private lazy var longPress = UILongPressGestureRecognizer(target: self, action: #selector(voiceLongClick))
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(voiceLongClick))
-        voiceBtn.addGestureRecognizer(longPress)
+
         textView.delegate = self
         textView.easy.layout(Height(<=300))
 
         setupContentStack()
         setupTextField()
+        setupAttachButtons()
     }
     
     required init(coder: NSCoder) {
@@ -96,7 +111,7 @@ class MessagingTextField: UIStackView {
                                                  cornerRadius: 20)
     }
     
-    func showAddBtn(){
+    func showAddBtn() {
         textView.text = nil
         addBtn.isHidden = false
         sendBtn.isHidden = true
@@ -126,12 +141,36 @@ class MessagingTextField: UIStackView {
         voiceRecordingView.frame = fieldWrapper.frame
         voiceRecordingView.setupGestureStates(sender)
     }
+
+    private func setupSendAddButton() {
+        if canSendAttachment {
+            addBtn.isHidden = !textView.text.isEmpty
+            sendBtn.isHidden = textView.text.isEmpty
+        } else {
+            sendBtn.isHidden = false
+            addBtn.isHidden = true
+        }
+    }
+
+    private func setupAttachButtons() {
+        if canSendAttachment {
+            if voiceBtn.superview == nil {
+                fieldWrapper.addArrangedSubview(voiceBtn)
+            }
+            if cameraBtn.superview == nil {
+                fieldWrapper.addArrangedSubview(cameraBtn)
+            }
+        } else {
+            voiceBtn.removeFromSuperview()
+            cameraBtn.removeFromSuperview()
+        }
+    }
 }
 
 extension MessagingTextField: UITextViewDelegate {
+
     func textViewDidChange(_ textView: UITextView) {
-        addBtn.isHidden = !textView.text.isEmpty
-        sendBtn.isHidden = textView.text.isEmpty
+        setupSendAddButton()
         
         let h = textView.contentSize.height
         if h <= 300 && textView.isScrollEnabled {

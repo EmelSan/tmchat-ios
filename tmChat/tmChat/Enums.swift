@@ -22,13 +22,14 @@ enum SocketOns: String {
     case unreadCount = "unreadMessageCount"
     case delete = "messageDelete"
     case read = "messageRead"
-
+    case sendSdp = "send_sdp"
 }
 
 enum SocketEmits: String {
     case new = "newMessage"
     case read = "messageRead"
     case deleteMsg = "messageDelete"
+    case sendSDP = "send_sdp"
 }
 
 
@@ -82,4 +83,9 @@ enum Lang: String {
     case en = "en"
 }
 
-
+enum App {
+    static let name: String = (Bundle.main.infoDictionary?["CFBundleName"] as? String) ?? "tmchat"
+    static let version: String = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "1.0"
+    static let build: String = (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? "1"
+    static let fullVersion: String = "\(App.version) (\(App.build))"
+}
