@@ -1770,6 +1770,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LH9V93BQ9M;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tmchat/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need access to camera to take picture";
@@ -1809,6 +1810,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = LH9V93BQ9M;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = tmchat/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need access to camera to take picture";
